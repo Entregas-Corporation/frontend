@@ -41,7 +41,19 @@ class HomePage extends StatelessWidget {
             BodyText(
               text: "Body",
             ),
-            FooterText(text: "Footer")
+            FooterText(text: "Footer"),
+            SizedBox(
+              height: 80,
+            ),
+            Row(
+              children: [
+                Expanded(child: CancelButton(text: "Back")),
+                SizedBox(
+                   width: 8,
+                ),
+                Expanded(child: ProgressButton(text: "Continue"))
+              ],
+            )
           ],
         ),
       ),
