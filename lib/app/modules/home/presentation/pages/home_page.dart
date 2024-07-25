@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:entregas/uikit/uikit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,13 +11,13 @@ class HomePage extends StatelessWidget {
         title: Image.asset(
           'assets/images/ENTREGAS-LOGO-HORIZONTAL.webp',
           fit: BoxFit.cover,
-          height: 24,
+          height: Scale.lg,
         ),
         titleSpacing: 0,
         toolbarHeight: kToolbarHeight,
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: Scale.xs),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -29,7 +30,21 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Container(),
+      body: const BodyDefault(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeadlineText(text: "Headline"),
+            TitleText(text: "Title"),
+            SubtitleText(text: "Subtitle"),
+            BodyText(
+              text: "Body",
+            ),
+            FooterText(text: "Footer")
+          ],
+        ),
+      ),
       drawer: const Drawer(),
     );
   }
