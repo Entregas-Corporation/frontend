@@ -11,6 +11,6 @@ class ProgressButton extends StatelessWidget {
     return ButtonDefault(
         text: text,
         backgroundColor: LightColors.secondary,
-        foregroundColor: LightColors.primary);
+        foregroundColor: LightColors.onSecondary);
   }
 }

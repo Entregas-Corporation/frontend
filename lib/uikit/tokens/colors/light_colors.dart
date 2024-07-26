@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 final class LightColors {
-  static const Color primary = Color(0xffffffff);
+  static const Color primary = Color(0xff000000);
   static const Color surfaceTint = Color(0xffFFFFFF);
   static const Color onPrimary = Color(0xff000000);
   static const Color primaryContainer = Color(0xffFE0000);

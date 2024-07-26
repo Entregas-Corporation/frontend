@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+  final controllerEC = TextEditingController();
+  HomePage({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,26 +31,31 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: const BodyDefault(
+      body: BodyDefault(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeadlineText(text: "Headline"),
-            TitleText(text: "Title"),
-            SubtitleText(text: "Subtitle"),
-            BodyText(
-              text: "Body",
-            ),
-            FooterText(text: "Footer"),
-            SizedBox(
+            const SearchInput(text: "Pesquisar..."),
+            FormInput(controller: controllerEC, text: "Pesquisar..."),
+            const SizedBox(
               height: 80,
             ),
-            Row(
+            const HeadlineText(text: "Headline"),
+            const TitleText(text: "Title"),
+            const SubtitleText(text: "Subtitle"),
+            const BodyText(
+              text: "Body",
+            ),
+            const FooterText(text: "Footer"),
+            const SizedBox(
+              height: 80,
+            ),
+            const Row(
               children: [
                 Expanded(child: CancelButton(text: "Back")),
                 SizedBox(
-                   width: 8,
+                  width: 8,
                 ),
                 Expanded(child: ProgressButton(text: "Continue"))
               ],

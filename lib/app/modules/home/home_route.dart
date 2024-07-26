@@ -19,6 +19,6 @@ class HomeRoute extends FlutterGetItModulePageRouter {
 
 
   @override
-  WidgetBuilder get view => (context) => const HomePage();
+  WidgetBuilder get view => (context) => HomePage();
 
 }
