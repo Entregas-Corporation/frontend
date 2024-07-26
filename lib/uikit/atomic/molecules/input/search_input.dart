@@ -19,10 +19,9 @@ class SearchInput extends StatelessWidget {
       hintText: text,
       icon: const Icon(
         Icons.search,
-        size: Scale.sm,
+        size: Scale.md,
       ),
       onChanged: onChanged,
-      borderRadius: Scale.xl,
     );
   }
 }

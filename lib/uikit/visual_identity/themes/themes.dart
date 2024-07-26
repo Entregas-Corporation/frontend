@@ -18,14 +18,20 @@ ThemeData get ligthTheme => ThemeData(
         ),
       ),
       cardTheme: CardTheme(
-        elevation: 0,
-        color: _lightColorScheme.tertiary
-      ),
-      elevatedButtonTheme: const ElevatedButtonThemeData(
-        style: ButtonStyle(elevation: WidgetStatePropertyAll(0))
+          elevation: 0.3,
+          shadowColor: Colors.black.withOpacity(0.25),
+          color: _lightColorScheme.tertiary),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          elevation: const WidgetStatePropertyAll(0.3),
+          shadowColor: WidgetStatePropertyAll(
+            Colors.black.withOpacity(0.25),
+          ),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-      
+        filled: true,
+        fillColor: _lightColorScheme.tertiary,
         hintStyle: Style.body,
         labelStyle: Style.body,
         floatingLabelStyle: Style.body,

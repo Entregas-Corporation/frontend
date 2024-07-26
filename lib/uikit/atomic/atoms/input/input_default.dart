@@ -12,7 +12,6 @@ class InputDefault extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final void Function(String)? onChanged;
-  final double borderRadius;
   const InputDefault({
     super.key,
     this.icon,
@@ -22,7 +21,6 @@ class InputDefault extends StatelessWidget {
     this.validator,
     this.controller,
     this.onChanged,
-    this.borderRadius = Scale.xxs,
   });
 
   @override
@@ -35,48 +33,55 @@ class InputDefault extends StatelessWidget {
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
-            horizontal: Scale.xs, vertical: Scale.xxs),
+            horizontal: Scale.sm, vertical: Scale.sm),
         isDense: true,
         suffixIconConstraints: const BoxConstraints(),
         suffixIcon: Padding(
-          padding: const EdgeInsets.only(right: Scale.xs, left: Scale.xxs),
+          padding: const EdgeInsets.only(right: Scale.sm, left: Scale.xs),
           child: icon ?? icon,
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderFoucus),
+          borderSide: BorderSide.none,
+          //borderSide: BorderSide(width: Scale.borderFoucus),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderDefault),
+          borderSide: BorderSide.none,
+
+          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderDefault),
+          borderSide: BorderSide.none,
+          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
-        disabledBorder: OutlineInputBorder(
+        disabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderDefault),
+          borderSide: BorderSide.none,
+          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
-        focusedErrorBorder: OutlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderDefault),
+          borderSide: BorderSide.none,
+          //borderSide: BorderSide(width: Scale.borderFoucus),
         ),
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(borderRadius),
+            Radius.circular(Scale.xs),
           ),
-          borderSide: const BorderSide(width: Scale.borderDefault),
+          borderSide: BorderSide.none,
+          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
         hintText: hintText,
       ),

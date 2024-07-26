@@ -14,16 +14,17 @@ class HomePage extends StatelessWidget {
           fit: BoxFit.cover,
           height: Scale.lg,
         ),
+
         titleSpacing: 0,
         toolbarHeight: kToolbarHeight,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: Scale.xxs),
+            padding: const EdgeInsets.only(right: Scale.xs),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-                IconButton(
+                IconButtonDefault(onPressed: () {}, icon: const Icon(Icons.search),),
+                IconButtonDefault(
                     onPressed: () {},
                     icon: const Icon(Icons.shopping_cart_outlined)),
               ],
@@ -31,13 +32,12 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: BodyDefault(
+            body: BodyDefault(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SearchInput(text: "Pesquisar..."),
-            FormInput(controller: controllerEC, text: "Pesquisar..."),
             const SizedBox(
               height: 80,
             ),
@@ -71,7 +71,9 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const Drawer(),
+      drawer: const Drawer(
+         
+      ),
     );
   }
 }
