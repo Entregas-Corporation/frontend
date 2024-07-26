@@ -17,6 +17,13 @@ ThemeData get ligthTheme => ThemeData(
           _lightColorScheme.primary,
         ),
       ),
+      cardTheme: CardTheme(
+        elevation: 0,
+        color: _lightColorScheme.tertiary
+      ),
+      elevatedButtonTheme: const ElevatedButtonThemeData(
+        style: ButtonStyle(elevation: WidgetStatePropertyAll(0))
+      ),
       inputDecorationTheme: InputDecorationTheme(
       
         hintStyle: Style.body,

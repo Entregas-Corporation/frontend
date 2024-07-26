@@ -6,12 +6,14 @@ import 'package:entregas/uikit/atomic/atoms/input/input_default.dart';
 
 class FormInput extends StatelessWidget {
   final TextEditingController controller;
+  final int maxLines;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final String text;
   const FormInput({
     super.key,
     required this.controller,
+    this.maxLines = 1,
     this.inputFormatters,
     this.validator,
     required this.text,
@@ -20,11 +22,11 @@ class FormInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InputDefault(
+      maxLines: maxLines,
       controller: controller,
       inputFormatters: inputFormatters,
       validator: validator,
       hintText: text,
-    
     );
   }
 }

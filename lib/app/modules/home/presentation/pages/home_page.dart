@@ -4,7 +4,7 @@ import 'package:entregas/uikit/uikit.dart';
 class HomePage extends StatelessWidget {
   final controllerEC = TextEditingController();
   HomePage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         toolbarHeight: kToolbarHeight,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: Scale.xs),
+            padding: const EdgeInsets.only(right: Scale.xxs),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -41,23 +41,31 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            const HeadlineText(text: "Headline"),
-            const TitleText(text: "Title"),
-            const SubtitleText(text: "Subtitle"),
-            const BodyText(
-              text: "Body",
-            ),
-            const FooterText(text: "Footer"),
+            CardDefault(
+            onTap: (){},  
+                child: const ListTile(
+              title: TitleText(text: "Title"),
+              subtitle: BodyText(text: "Subtitle"),
+              
+            )),
             const SizedBox(
               height: 80,
             ),
-            const Row(
+            Row(
               children: [
-                Expanded(child: CancelButton(text: "Back")),
-                SizedBox(
+                Expanded(
+                    child: CancelButton(
+                  text: "Back",
+                  onPressed: () {},
+                )),
+                const SizedBox(
                   width: 8,
                 ),
-                Expanded(child: ProgressButton(text: "Continue"))
+                Expanded(
+                    child: ProgressButton(
+                  text: "Continue",
+                  onPressed: () {},
+                ))
               ],
             )
           ],

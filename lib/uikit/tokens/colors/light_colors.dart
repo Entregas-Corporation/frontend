@@ -10,7 +10,7 @@ final class LightColors {
   static const Color onSecondary = Color(0xffffffff);
   static const Color secondaryContainer = Color(0xffFE0000);
   static const Color onSecondaryContainer = Color(0xffFE0000);
-  static const Color tertiary = Color(0xffF1F2F4);
+  static const Color tertiary = Color(0x80F1F2F4);
   static const Color onTertiary = Color(0xffffffff);
   static const Color tertiaryContainer = Color(0xffFE0000);
   static const Color onTertiaryContainer = Color(0xffFE0000);
