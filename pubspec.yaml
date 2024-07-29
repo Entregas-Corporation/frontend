@@ -29,7 +29,6 @@ dependencies:
   flutter_getit: ^2.0.0
   mobx: ^2.3.3+2
   google_sign_in: ^6.2.1
-  google_sign_in_web: ^0.12.4+1
 
 
 dev_dependencies:

@@ -32,21 +32,17 @@ class ContentLoginWidget extends StatelessWidget {
           const SizedBox(
             height: Scale.sm,
           ),
-          Observer(
-            builder: (context) {
-              return SizedBox(
-                width: double.infinity,
-                child: ProgressButton(
-                  text: "Fazer Login",
-                  onPressed: () {
-                    authController.login();
-                    print("AQUUIIIIIII");
-                    debugPrint("${authController.googleAccount?.email}");
-                  },
-                ),
-              );
-            }
-          ),
+          Observer(builder: (context) {
+            return SizedBox(
+              width: double.infinity,
+              child: ProgressButton(
+                text: "Fazer Login",
+                onPressed: () {
+                  authController.login();
+                },
+              ),
+            );
+          }),
         ]),
       ),
     );

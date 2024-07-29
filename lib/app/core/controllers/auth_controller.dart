@@ -18,12 +18,12 @@ abstract class AuthControllerBase with Store {
   GoogleSignInAccount? googleAccount;
 
   @action
-  login() async{
+  login() async {
     googleAccount = await service.login();
   }
 
   @action
-  logout() async{
+  logout() async {
     googleAccount = await service.logout();
   }
 }

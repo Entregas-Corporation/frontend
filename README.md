@@ -25,4 +25,4 @@ Após a configuração, volte ao projeto e execute os seguintes comandos no term
 
 - flutter pub get
 - flutter gen-l10n
-- flutter run -d chrome
+- flutter run -d chrome --web-hostname localhost --web-port 7357

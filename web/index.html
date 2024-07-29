@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -19,25 +20,46 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
-  
-  <!-- Google Id Client -->
-  <meta name="google-signin-client_id" content="680799438834-eq81ku2880g13v91jr7tqf8kdete6jls.apps.googleusercontent.com">
-  
+
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="entregas">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-
-
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>entregas</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
+  
   <script src="flutter_bootstrap.js" async></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCR6MPsrkxlYuNtok1D2NB0Z9hoDx8Nzc4",
+      authDomain: "entregas-31768.firebaseapp.com",
+      projectId: "entregas-31768",
+      storageBucket: "entregas-31768.appspot.com",
+      messagingSenderId: "836618016090",
+      appId: "1:836618016090:web:abd74143039e9ae2ca8f63"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
+
 </html>
