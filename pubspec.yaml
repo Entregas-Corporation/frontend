@@ -11,7 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
+  flutter_web_plugins:
+    sdk: flutter
+ 
   flutter_localizations:
     sdk: flutter
 
@@ -25,6 +28,8 @@ dependencies:
   flutter_mobx: ^2.2.1+1
   flutter_getit: ^2.0.0
   mobx: ^2.3.3+2
+  google_sign_in: ^6.2.1
+  google_sign_in_web: ^0.12.4+1
 
 
 dev_dependencies:
@@ -44,7 +49,7 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Tenor Sans
+    - family: Martel Sans
       fonts:
-        - asset: assets/fonts/TenorSans-Regular.ttf
-          weight: 400
+        - asset: assets/fonts/MartelSans-SemiBold.ttf
+          weight: 600

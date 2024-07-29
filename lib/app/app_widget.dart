@@ -1,8 +1,9 @@
-import 'package:entregas/app/core/services/local/local_store_service.dart';
-import 'package:entregas/app/core/services/local/local_store_service_impl.dart';
+import 'package:entregas/app/core/controllers/auth_controller.dart';
+import 'package:entregas/app/core/services/auth/social/google_auth_service_impl.dart';
+import 'package:entregas/app/core/services/auth/social/social_auth_service.dart';
+import 'package:entregas/app/modules/auth/auth_module.dart';
 import 'package:entregas/app/modules/home/home_module.dart';
-import 'package:entregas/app/modules/home/presentation/controllers/controller.dart';
-import 'package:entregas/app/modules/home/viewmodels/viewmodel.dart';
+
 import 'package:entregas/l10n/l10n.dart';
 import 'package:entregas/uikit/visual_identity/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -18,19 +19,15 @@ class AppWidget extends StatelessWidget {
     return FlutterGetIt(
       bindingsBuilder: () {
         return [
-          Bind.singleton<LocalStoreService>(
-            (i) => LocalStoreServiceImpl(),
+          Bind.singleton<SocialAuthService>(
+            (i) => GoogleAuthServiceImpl(),
           ),
-          Bind.singleton(
-            (i) => Viewmodel(),
-          ),
-          Bind.singleton(
-            (i) => Controller(),
-          ),
+          Bind.singleton((i) => AuthController(service: i()))
         ];
       },
       modules: [
         HomeModule(),
+        AuthModule(),
       ],
       builder: (context, routes, flutterGetItNavObserver) {
         return MaterialApp(

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 
@@ -7,14 +8,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+      return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'assets/images/ENTREGAS-LOGO-HORIZONTAL.webp',
+          'assets/images/ENTREGAS-LOGO-HORIZONTAL.png',
           fit: BoxFit.cover,
           height: Scale.lg,
         ),
-
         titleSpacing: 0,
         toolbarHeight: kToolbarHeight,
         actions: [
@@ -23,7 +23,10 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButtonDefault(onPressed: () {}, icon: const Icon(Icons.search),),
+                IconButtonDefault(
+                  onPressed: () {},
+                  icon: const Icon(Icons.search),
+                ),
                 IconButtonDefault(
                     onPressed: () {},
                     icon: const Icon(Icons.shopping_cart_outlined)),
@@ -32,7 +35,7 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-            body: BodyDefault(
+      body: BodyDefault(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,12 +45,11 @@ class HomePage extends StatelessWidget {
               height: 80,
             ),
             CardDefault(
-            onTap: (){},  
+                onTap: () {},
                 child: const ListTile(
-              title: TitleText(text: "Title"),
-              subtitle: BodyText(text: "Subtitle"),
-              
-            )),
+                  title: TitleText(text: "Title"),
+                  subtitle: BodyText(text: "Subtitle"),
+                )),
             const SizedBox(
               height: 80,
             ),
@@ -71,9 +73,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const Drawer(
-         
-      ),
+      drawer: const Drawer(),
     );
   }
 }
