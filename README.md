@@ -24,5 +24,4 @@ Primeiramente, instale todas as configurações do flutter em sua máquina, caso
 Após a configuração, volte ao projeto e execute os seguintes comandos no terminal:
 
 - flutter pub get
-- flutter gen-l10n
 - flutter run -d chrome --web-hostname localhost --web-port 7357

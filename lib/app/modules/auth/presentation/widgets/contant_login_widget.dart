@@ -2,7 +2,6 @@ import 'package:entregas/app/core/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter_getit/flutter_getit.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class ContentLoginWidget extends StatelessWidget {
   ContentLoginWidget({super.key});
@@ -32,17 +31,15 @@ class ContentLoginWidget extends StatelessWidget {
           const SizedBox(
             height: Scale.sm,
           ),
-          Observer(builder: (context) {
-            return SizedBox(
-              width: double.infinity,
-              child: ProgressButton(
-                text: "Fazer Login",
-                onPressed: () {
-                  authController.login();
-                },
-              ),
-            );
-          }),
+          SizedBox(
+            width: double.infinity,
+            child: ProgressButton(
+              text: "Fazer Login",
+              onPressed: () {
+                authController.login();
+              },
+            ),
+          ),
         ]),
       ),
     );

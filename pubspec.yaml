@@ -30,7 +30,6 @@ dependencies:
   mobx: ^2.3.3+2
   google_sign_in: ^6.2.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,8 +41,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-  generate: true
-
+  
   assets:
     - assets/images/
 
