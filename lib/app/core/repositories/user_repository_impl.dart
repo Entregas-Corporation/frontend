@@ -17,7 +17,7 @@ class UserRepositoryImpl implements UserRepository {
   });
 
   @override
-  Future<LoginUserDto> login(LoginUserDto model) async {
+  Future<Response> login(LoginUserDto model) async {
     try {
       return await clientService.post(ApiConstant.userLogin, model.toJson());
     } on DioException catch (e) {

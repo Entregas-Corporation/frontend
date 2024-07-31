@@ -14,10 +14,23 @@ abstract class AuthControllerBase with Store {
   });
 
   @computed
+  String? get accessToken => authViewModel.accessToken;
+
+  @computed
   bool get isLoading => authViewModel.isLoading;
 
   @action
   login() async {
     await authViewModel.login();
+  }
+
+  @action
+  logout() async {
+    await authViewModel.logout();
+  }
+
+  @action
+  accessTokenLoad() async {
+    await authViewModel.accessTokenLoad();
   }
 }

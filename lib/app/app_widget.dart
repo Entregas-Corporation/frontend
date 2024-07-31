@@ -5,6 +5,8 @@ import 'package:entregas/app/core/services/auth/social/google_auth_service_impl.
 import 'package:entregas/app/core/services/auth/social/social_auth_service.dart';
 import 'package:entregas/app/core/services/client/client_service.dart';
 import 'package:entregas/app/core/services/client/client_service_impl.dart';
+import 'package:entregas/app/core/services/local/local_store_service.dart';
+import 'package:entregas/app/core/services/local/local_store_service_impl.dart';
 import 'package:entregas/app/core/services/messages/message_service.dart';
 import 'package:entregas/app/core/services/messages/message_service_impl.dart';
 import 'package:entregas/app/core/viewmodels/auth_view_model.dart';
@@ -43,11 +45,15 @@ class AppWidget extends StatelessWidget {
               clientService: i(),
             ),
           ),
+          Bind.singleton<LocalStoreService>(
+            (i) => LocalStoreServiceImpl(),
+          ),
           Bind.singleton(
             (i) => AuthViewModel(
               userRepository: i(),
               messageService: i(),
               socialAuthService: i(),
+              localStoreService: i(),
             ),
           ),
           Bind.singleton(

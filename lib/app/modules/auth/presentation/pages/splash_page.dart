@@ -1,4 +1,6 @@
+import 'package:entregas/app/core/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -8,13 +10,20 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final controller = Injector.get<AuthController>();
+
   @override
   void initState() {
     super.initState();
+    controller.accessTokenLoad();
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Navigator.pushReplacementNamed(context, '/login');
+        if (controller.accessToken != null) {
+          Navigator.pushReplacementNamed(context, '/home');
+        } else {
+          Navigator.pushReplacementNamed(context, '/login');
+        }
       },
     );
   }

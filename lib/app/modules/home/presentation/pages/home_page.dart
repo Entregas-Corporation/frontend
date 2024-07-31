@@ -1,14 +1,17 @@
-
+import 'package:entregas/app/core/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
 class HomePage extends StatelessWidget {
-  final controllerEC = TextEditingController();
   HomePage({super.key});
+
+  final controllerEC = TextEditingController();
+  final controller = Injector.get<AuthController>();
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Image.asset(
           'assets/images/ENTREGAS-LOGO-HORIZONTAL.png',
@@ -28,7 +31,9 @@ class HomePage extends StatelessWidget {
                   icon: const Icon(Icons.search),
                 ),
                 IconButtonDefault(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.logout();
+                    },
                     icon: const Icon(Icons.shopping_cart_outlined)),
               ],
             ),
@@ -45,11 +50,16 @@ class HomePage extends StatelessWidget {
               height: 80,
             ),
             CardDefault(
-                onTap: () {},
-                child: const ListTile(
-                  title: TitleText(text: "Title"),
-                  subtitle: BodyText(text: "Subtitle"),
-                )),
+              onTap: () {},
+              child: const ListTile(
+                title: TitleText(text: "Title"),
+                subtitle: BodyText(text: "Subtitle"),
+              ),
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            BodyText(text: "Access Token: ${controller.accessToken}"),
             const SizedBox(
               height: 80,
             ),

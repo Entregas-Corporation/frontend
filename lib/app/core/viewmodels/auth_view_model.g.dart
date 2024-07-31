@@ -41,6 +41,30 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
     });
   }
 
+  late final _$accessTokenAtom =
+      Atom(name: 'AuthViewModelBase.accessToken', context: context);
+
+  @override
+  String? get accessToken {
+    _$accessTokenAtom.reportRead();
+    return super.accessToken;
+  }
+
+  @override
+  set accessToken(String? value) {
+    _$accessTokenAtom.reportWrite(value, super.accessToken, () {
+      super.accessToken = value;
+    });
+  }
+
+  late final _$accessTokenLoadAsyncAction =
+      AsyncAction('AuthViewModelBase.accessTokenLoad', context: context);
+
+  @override
+  Future accessTokenLoad() {
+    return _$accessTokenLoadAsyncAction.run(() => super.accessTokenLoad());
+  }
+
   late final _$loginAsyncAction =
       AsyncAction('AuthViewModelBase.login', context: context);
 
@@ -57,11 +81,20 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
     return _$registerAsyncAction.run(() => super.register());
   }
 
+  late final _$logoutAsyncAction =
+      AsyncAction('AuthViewModelBase.logout', context: context);
+
+  @override
+  Future logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-googleCredentials: ${googleCredentials}
+googleCredentials: ${googleCredentials},
+accessToken: ${accessToken}
     ''';
   }
 }
