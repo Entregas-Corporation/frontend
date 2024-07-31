@@ -45,7 +45,8 @@ class MessageServiceImpl implements MessageService {
           behavior: SnackBarBehavior.floating,
           margin: const EdgeInsets.all(Scale.md),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Scale.sm)),
+            borderRadius: BorderRadius.circular(Scale.sm),
+          ),
         ),
       );
     }
@@ -62,13 +63,14 @@ class MessageServiceImpl implements MessageService {
           content: content(
             message,
             const Icon(
-              Icons.verified_user_outlined,
+              Icons.check_circle_outlined,
             ),
           ),
           behavior: SnackBarBehavior.floating,
           margin: const EdgeInsets.all(Scale.md),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Scale.sm)),
+            borderRadius: BorderRadius.circular(Scale.sm),
+          ),
         ),
       );
     }

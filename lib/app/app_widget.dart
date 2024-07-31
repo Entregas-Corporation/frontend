@@ -1,10 +1,13 @@
 import 'package:entregas/app/core/controllers/auth_controller.dart';
+import 'package:entregas/app/core/repositories/user_repository.dart';
+import 'package:entregas/app/core/repositories/user_repository_impl.dart';
 import 'package:entregas/app/core/services/auth/social/google_auth_service_impl.dart';
 import 'package:entregas/app/core/services/auth/social/social_auth_service.dart';
 import 'package:entregas/app/core/services/client/client_service.dart';
 import 'package:entregas/app/core/services/client/client_service_impl.dart';
 import 'package:entregas/app/core/services/messages/message_service.dart';
 import 'package:entregas/app/core/services/messages/message_service_impl.dart';
+import 'package:entregas/app/core/viewmodels/auth_view_model.dart';
 import 'package:entregas/app/modules/auth/auth_module.dart';
 import 'package:entregas/app/modules/home/home_module.dart';
 
@@ -25,9 +28,7 @@ class AppWidget extends StatelessWidget {
             (i) => ClientServiceImpl(),
           ),
           Bind.singleton<SocialAuthService>(
-            (i) => GoogleAuthServiceImpl(
-              clientService: i(),
-            ),
+            (i) => GoogleAuthServiceImpl(),
           ),
           Bind.singleton<GlobalKey<NavigatorState>>(
             (i) => navigatorKey,
@@ -37,11 +38,20 @@ class AppWidget extends StatelessWidget {
               navigatorKey: i(),
             ),
           ),
-          Bind.singleton(
-            (i) => AuthController(
-              service: i(),
-              messageService: i(),
+          Bind.singleton<UserRepository>(
+            (i) => UserRepositoryImpl(
+              clientService: i(),
             ),
+          ),
+          Bind.singleton(
+            (i) => AuthViewModel(
+              userRepository: i(),
+              messageService: i(),
+              socialAuthService: i(),
+            ),
+          ),
+          Bind.singleton(
+            (i) => AuthController(authViewModel: i()),
           )
         ];
       },

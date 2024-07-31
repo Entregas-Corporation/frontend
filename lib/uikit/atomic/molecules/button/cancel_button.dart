@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
-
-import 'package:entregas/uikit/atomic/atoms/atom.dart';
-import 'package:entregas/uikit/tokens/token.dart';
 
 class CancelButton extends StatelessWidget {
   final String text;
@@ -16,10 +14,10 @@ class CancelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonDefault(
-      text: text,
       backgroundColor: LightColors.tertiary,
       foregroundColor: LightColors.onPrimary,
       onPressed: onPressed,
+      child: BodyText(text: text),
     );
   }
 }

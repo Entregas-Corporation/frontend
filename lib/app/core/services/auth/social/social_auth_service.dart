@@ -1,7 +1,6 @@
-import 'package:entregas/app/core/dtos/user_save_dto.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract interface class SocialAuthService {
-  Future<UserSaveDto> login();
-  Future<UserSaveDto> register();
+  Future<GoogleSignInAccount?> login();
   Future logout();
 }

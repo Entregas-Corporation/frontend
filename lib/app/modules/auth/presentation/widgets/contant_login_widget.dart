@@ -1,7 +1,9 @@
+import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class ContentLoginWidget extends StatelessWidget {
   ContentLoginWidget({super.key});
@@ -20,7 +22,7 @@ class ContentLoginWidget extends StatelessWidget {
             "assets/images/ENTREGAS-LOGO-VERTICAL.png",
             height: 200,
           ),
-          const BodyText(text: "Que tal fazer um pedido?"),
+          const BodyText(text: TextConstant.loginAppeal),
           const SizedBox(
             height: Scale.xs,
           ),
@@ -33,12 +35,25 @@ class ContentLoginWidget extends StatelessWidget {
           ),
           SizedBox(
             width: double.infinity,
-            child: ProgressButton(
-              text: "Fazer Login",
-              onPressed: () {
-                authController.login();
-              },
-            ),
+            child: Observer(builder: (_) {
+              if (authController.isLoading) {
+                return const ProgressButton(
+                  child: SizedBox(
+                    height: Scale.sm,
+                    width: Scale.sm,
+                    child: CircularProgressIndicator(
+                      color: LightColors.background,
+                    ),
+                  ),
+                );
+              }
+              return ProgressButton(
+                text: TextConstant.login,
+                onPressed: () {
+                  authController.login();
+                },
+              );
+            }),
           ),
         ]),
       ),

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class UserSaveDto {
+class RegisterUserDto {
   final String name;
   final String email;
   final String? image;
-  UserSaveDto({
+  RegisterUserDto({
     required this.name,
     required this.email,
     this.image,
@@ -19,8 +19,8 @@ class UserSaveDto {
     };
   }
 
-  factory UserSaveDto.fromMap(Map<String, dynamic> map) {
-    return UserSaveDto(
+  factory RegisterUserDto.fromMap(Map<String, dynamic> map) {
+    return RegisterUserDto(
       name: map['name'] as String,
       email: map['email'] as String,
       image: map['image'] != null ? map['image'] as String : null,
@@ -29,11 +29,11 @@ class UserSaveDto {
 
   String toJson() => json.encode(toMap());
 
-  factory UserSaveDto.fromJson(String source) =>
-      UserSaveDto.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory RegisterUserDto.fromJson(String source) =>
+      RegisterUserDto.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  bool operator ==(covariant UserSaveDto other) {
+  bool operator ==(covariant RegisterUserDto other) {
     if (identical(this, other)) return true;
 
     return other.name == name && other.email == email && other.image == image;

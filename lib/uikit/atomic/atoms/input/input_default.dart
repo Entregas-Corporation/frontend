@@ -45,7 +45,6 @@ class InputDefault extends StatelessWidget {
             Radius.circular(Scale.xs),
           ),
           borderSide: BorderSide.none,
-          //borderSide: BorderSide(width: Scale.borderFoucus),
         ),
         errorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -53,35 +52,30 @@ class InputDefault extends StatelessWidget {
           ),
           borderSide: BorderSide.none,
 
-          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
           borderSide: BorderSide.none,
-          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
         disabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
           borderSide: BorderSide.none,
-          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
         focusedErrorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
           borderSide: BorderSide.none,
-          //borderSide: BorderSide(width: Scale.borderFoucus),
         ),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
           borderSide: BorderSide.none,
-          //borderSide: BorderSide(width: Scale.borderDefault),
         ),
         hintText: hintText,
       ),

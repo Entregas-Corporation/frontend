@@ -12,6 +12,9 @@ class BodyDefault extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.only(left: Scale.md, right: Scale.md), child: body,);
+    return Padding(
+      padding: const EdgeInsets.only(left: Scale.md, right: Scale.md),
+      child: body,
+    );
   }
 }
