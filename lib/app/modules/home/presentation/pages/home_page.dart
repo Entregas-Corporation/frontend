@@ -2,6 +2,7 @@ import 'package:entregas/app/core/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -27,14 +28,18 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButtonDefault(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/whatever');
+                  },
                   icon: const Icon(Icons.search),
                 ),
                 IconButtonDefault(
-                    onPressed: () {
-                      controller.logout();
-                    },
-                    icon: const Icon(Icons.shopping_cart_outlined)),
+                  onPressed: () async {
+                    await controller.logout();
+                    Navigator.of(context).pushReplacementNamed('/login');
+                  },
+                  icon: const Icon(Icons.shopping_cart_outlined),
+                ),
               ],
             ),
           )
@@ -59,7 +64,11 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            BodyText(text: "Access Token: ${controller.accessToken}"),
+            Observer(
+              builder: (context) {
+                return BodyText(text: "Access Token: ${controller.accessToken}");
+              }
+            ),
             const SizedBox(
               height: 80,
             ),

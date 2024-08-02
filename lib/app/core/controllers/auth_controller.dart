@@ -22,15 +22,18 @@ abstract class AuthControllerBase with Store {
   @action
   login() async {
     await authViewModel.login();
+    await accessTokenLoad();
   }
 
   @action
   logout() async {
     await authViewModel.logout();
+    await accessTokenLoad();
   }
 
   @action
   accessTokenLoad() async {
     await authViewModel.accessTokenLoad();
   }
+
 }

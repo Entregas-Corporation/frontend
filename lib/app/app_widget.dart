@@ -12,6 +12,7 @@ import 'package:entregas/app/core/services/messages/message_service_impl.dart';
 import 'package:entregas/app/core/viewmodels/auth_view_model.dart';
 import 'package:entregas/app/modules/auth/auth_module.dart';
 import 'package:entregas/app/modules/home/home_module.dart';
+import 'package:entregas/app/modules/whatever/whatever_module.dart';
 
 import 'package:entregas/uikit/visual_identity/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,7 @@ class AppWidget extends StatelessWidget {
       modules: [
         HomeModule(),
         AuthModule(),
+        WhateverModule(),
       ],
       builder: (context, routes, flutterGetItNavObserver) {
         return MaterialApp(

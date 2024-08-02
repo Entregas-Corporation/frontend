@@ -19,9 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        if (controller.accessToken != null) {
-          Navigator.pushReplacementNamed(context, '/home');
-        } else {
+        if (controller.accessToken == null) {
           Navigator.pushReplacementNamed(context, '/login');
         }
       },

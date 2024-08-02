@@ -2,19 +2,33 @@
 <html>
 
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+  <style>
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+    .loader{
+      border: 16px solid #F4F5F6;
+      border-radius: 50%;
+      border-top: 16px solid #FE0000;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    @keyframes spin {
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
@@ -32,34 +46,19 @@
 
   <title>entregas</title>
   <link rel="manifest" href="manifest.json">
+
 </head>
 
 <body>
-  
+
   <script src="flutter_bootstrap.js" async></script>
-  
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
 
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+  <div class="container">
+    <div class="loader">
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCR6MPsrkxlYuNtok1D2NB0Z9hoDx8Nzc4",
-      authDomain: "entregas-31768.firebaseapp.com",
-      projectId: "entregas-31768",
-      storageBucket: "entregas-31768.appspot.com",
-      messagingSenderId: "836618016090",
-      appId: "1:836618016090:web:abd74143039e9ae2ca8f63"
-    };
+    </div>
+  </div>
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
 </body>
 
 </html>

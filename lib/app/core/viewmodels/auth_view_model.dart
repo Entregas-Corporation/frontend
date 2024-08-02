@@ -58,6 +58,7 @@ abstract class AuthViewModelBase with Store {
       if (e.response?.statusCode == 403) {
         await register();
       } else {
+        await logout();
         messageService.showMessageError(e.message);
       }
     } finally {

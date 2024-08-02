@@ -49,8 +49,11 @@ class ContentLoginWidget extends StatelessWidget {
               }
               return ProgressButton(
                 text: TextConstant.login,
-                onPressed: () {
-                  authController.login();
+                onPressed: () async{
+                  await authController.login();
+                  if (authController.accessToken != null) {
+                    Navigator.of(context).pushReplacementNamed('/home');
+                  }
                 },
               );
             }),
