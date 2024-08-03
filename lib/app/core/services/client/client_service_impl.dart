@@ -3,10 +3,7 @@ import 'package:entregas/app/core/services/client/client_service.dart';
 
 class ClientServiceImpl implements ClientService {
   final Dio dio = Dio();
-
-  @override
-  void addToken(String token) {}
-
+  
   @override
   Future get(String url) async {
     return await dio.get(url);
