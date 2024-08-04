@@ -1,4 +1,5 @@
-import 'package:entregas/app/core/controllers/auth_controller.dart';
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:entregas/app/core/repositories/user_repository.dart';
 import 'package:entregas/app/core/repositories/user_repository_impl.dart';
 import 'package:entregas/app/core/services/auth/social/google_auth_service_impl.dart';
@@ -59,7 +60,12 @@ class AppWidget extends StatelessWidget {
           ),
           Bind.singleton(
             (i) => AuthController(authViewModel: i()),
-          )
+          ),
+          Bind.singleton(
+            (i) => RouteController(
+              localStoreService: i(),
+            ),
+          ),
         ];
       },
       modules: [

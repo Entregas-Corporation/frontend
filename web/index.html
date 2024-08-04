@@ -3,27 +3,43 @@
 
 <head>
   <style>
-    .container{
+    .container {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      position: relative;
     }
-    .loader{
+    .loader {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .loader::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: 16px solid #F4F5F6;
-      border-radius: 50%;
       border-top: 16px solid #FE0000;
-      width: 120px;
-      height: 120px;
+      border-radius: 50%;
       animation: spin 2s linear infinite;
+      box-sizing: border-box;
+    }
+    .logo {
+      height: 200px;
     }
 
     @keyframes spin {
-      0%{
+      0% {
         transform: rotate(0deg);
       }
-      100%{
+
+      100% {
         transform: rotate(360deg);
       }
     }
@@ -55,7 +71,7 @@
 
   <div class="container">
     <div class="loader">
-
+      <img src="ENTREGAS-LOGO-VERTICAL.png" alt="Entregas" class="logo">
     </div>
   </div>
 

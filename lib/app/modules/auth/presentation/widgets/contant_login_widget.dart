@@ -1,5 +1,6 @@
 import 'package:entregas/app/core/constants/text_constant.dart';
-import 'package:entregas/app/core/controllers/auth_controller.dart';
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter_getit/flutter_getit.dart';
@@ -9,6 +10,7 @@ class ContentLoginWidget extends StatelessWidget {
   ContentLoginWidget({super.key});
 
   final authController = Injector.get<AuthController>();
+  final routeController = Injector.get<RouteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,9 @@ class ContentLoginWidget extends StatelessWidget {
               }
               return ProgressButton(
                 text: TextConstant.login,
-                onPressed: () async{
+                onPressed: () async {
                   await authController.login();
+                  await routeController.routeUpdate('/home');
                   if (authController.accessToken != null) {
                     Navigator.of(context).pushReplacementNamed('/home');
                   }

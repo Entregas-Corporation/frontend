@@ -1,4 +1,5 @@
-import 'package:entregas/app/core/controllers/auth_controller.dart';
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter_getit/flutter_getit.dart';
@@ -8,7 +9,8 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final controllerEC = TextEditingController();
-  final controller = Injector.get<AuthController>();
+  final authController = Injector.get<AuthController>();
+  final routeController = Injector.get<RouteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,16 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButtonDefault(
-                  onPressed: () {
+                  onPressed: () async {
+                    await routeController.routeUpdate('/whatever');
                     Navigator.of(context).pushReplacementNamed('/whatever');
                   },
                   icon: const Icon(Icons.search),
                 ),
                 IconButtonDefault(
                   onPressed: () async {
-                    await controller.logout();
+                    await authController.logout();
+                    await routeController.routeClean();
                     Navigator.of(context).pushReplacementNamed('/login');
                   },
                   icon: const Icon(Icons.shopping_cart_outlined),
@@ -64,11 +68,10 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            Observer(
-              builder: (context) {
-                return BodyText(text: "Access Token: ${controller.accessToken}");
-              }
-            ),
+            Observer(builder: (context) {
+              return BodyText(
+                  text: "Access Token: ${authController.accessToken}");
+            }),
             const SizedBox(
               height: 80,
             ),
