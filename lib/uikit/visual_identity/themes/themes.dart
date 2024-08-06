@@ -8,8 +8,10 @@ ThemeData get ligthTheme => ThemeData(
       appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
           color: _lightColorScheme.onPrimary,
-          fontSize: 18,
+
         ),
+        titleSpacing: 0,
+        toolbarHeight: kToolbarHeight,
         backgroundColor: _lightColorScheme.onPrimaryContainer,
       ),
       radioTheme: RadioThemeData(
@@ -32,14 +34,6 @@ ThemeData get ligthTheme => ThemeData(
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: _lightColorScheme.tertiary,
-        hintStyle: Style.body,
-        labelStyle: Style.body,
-        floatingLabelStyle: Style.body,
-        errorStyle: Style.body,
-        helperStyle: Style.body,
-        prefixStyle: Style.body,
-        counterStyle: Style.body,
-        suffixStyle: Style.body,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: _lightColorScheme.onPrimary,

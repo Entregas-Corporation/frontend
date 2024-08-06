@@ -5,10 +5,12 @@ import 'package:entregas/uikit/tokens/token.dart';
 
 class IconButtonDefault extends StatelessWidget {
   final Icon icon;
+  final String tooltipText;
   final void Function()? onPressed;
   const IconButtonDefault({
     super.key,
     required this.icon,
+    required this.tooltipText,
     this.onPressed,
   });
 
@@ -17,8 +19,8 @@ class IconButtonDefault extends StatelessWidget {
     return IconButton(
       onPressed: onPressed,
       icon: icon,
+      tooltip: tooltipText,
       style: ButtonStyle(
-        backgroundColor: const WidgetStatePropertyAll(LightColors.tertiary),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Scale.xs),

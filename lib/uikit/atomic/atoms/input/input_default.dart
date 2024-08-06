@@ -27,7 +27,7 @@ class InputDefault extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
-      style: Style.body,
+      style: Style.body(),
       controller: controller ?? controller,
       validator: validator ?? validator,
       inputFormatters: inputFormatters,

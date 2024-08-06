@@ -91,5 +91,6 @@ abstract class AuthViewModelBase with Store {
   logout() async {
     await localStoreService.delete(LocalStorageConstant.authKey);
     await socialAuthService.logout();
+    await accessTokenLoad();
   }
 }
