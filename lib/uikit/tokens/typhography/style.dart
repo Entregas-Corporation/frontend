@@ -12,6 +12,9 @@ final class Style {
   static TextStyle body({Color? color}) =>
       TextStyle(fontSize: Font.sm, fontFamily: 'Martel Sans', color: color);
 
-  static TextStyle footer({Color? color}) =>
+  static TextStyle label({Color? color}) =>
       TextStyle(fontSize: Font.xs, fontFamily: 'Martel Sans', color: color);
+
+  static TextStyle footer({Color? color}) =>
+      TextStyle(fontSize: Font.xxs, fontFamily: 'Martel Sans', color: color);
 }

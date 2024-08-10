@@ -2,6 +2,7 @@
 import 'package:entregas/uikit/atomic/atoms/body/content/content_default.dart';
 import 'package:entregas/uikit/atomic/atoms/body/divider/divider_default.dart';
 import 'package:entregas/uikit/atomic/atoms/body/footer/footer_default.dart';
+import 'package:entregas/uikit/tokens/sizes/scale.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,6 +20,9 @@ class BodyDefault extends StatelessWidget {
         child: Column(
           children: [
             body,
+            const SizedBox(
+               height: Scale.xs,
+            ),
             const DividerDefault(),
             const FooterDefault(),
           ],

@@ -1,19 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 
-import 'package:entregas/uikit/tokens/sizes/scale.dart';
 import 'package:entregas/uikit/tokens/token.dart';
+import 'package:entregas/uikit/uikit.dart';
 
 class CardDefault extends StatelessWidget {
   final void Function()? onTap;
   final Widget child;
-  final Color? backgroundColor;
+  final double? borderRadius;
   const CardDefault({
     super.key,
     this.onTap,
     required this.child,
-    this.backgroundColor,
+    this.borderRadius,
   });
 
   @override
@@ -21,16 +20,15 @@ class CardDefault extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(Scale.sm),
       onTap: onTap,
-      child: Card(
-        color: backgroundColor,
-        child: Theme(
-            data: Theme.of(context).copyWith(
-              iconTheme: IconThemeData(
-                color: backgroundColor != null ? LightColors.onSecondary : null,
-              ),
-            ),
-            child: child),
-      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: LightColors.tertiary, width: 1.5),
+          borderRadius: BorderRadius.all(
+            Radius.circular(borderRadius != null ? borderRadius! : Scale.md),
+          ),
+        ),
+        child: child),
+      
     );
   }
 }

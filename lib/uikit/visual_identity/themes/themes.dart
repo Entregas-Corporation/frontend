@@ -14,6 +14,7 @@ ThemeData get ligthTheme => ThemeData(
         toolbarHeight: kToolbarHeight,
         backgroundColor: _lightColorScheme.onPrimaryContainer,
       ),
+
       radioTheme: RadioThemeData(
         fillColor: WidgetStateProperty.all(
           _lightColorScheme.primary,
@@ -22,7 +23,7 @@ ThemeData get ligthTheme => ThemeData(
       cardTheme: CardTheme(
           elevation: 0.3,
           shadowColor: Colors.black.withOpacity(0.25),
-          color: _lightColorScheme.tertiary),
+          color: _lightColorScheme.surfaceTint),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           elevation: const WidgetStatePropertyAll(0.3),

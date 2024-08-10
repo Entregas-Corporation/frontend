@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:mobx/mobx.dart';
 
-import 'package:entregas/app/core/viewmodels/auth_view_model.dart';
+import 'package:entregas/app/core/viewmodels/auth/auth_view_model.dart';
 
 part 'auth_controller.g.dart';
 
@@ -14,7 +14,7 @@ abstract class AuthControllerBase with Store {
   });
 
   @computed
-  String? get accessToken => authViewModel.accessToken;
+  String? get idUser => authViewModel.idUser;
 
   @computed
   bool get isLoading => authViewModel.isLoading;
@@ -33,7 +33,7 @@ abstract class AuthControllerBase with Store {
 
   @action
   accessTokenLoad() async {
-    await authViewModel.accessTokenLoad();
+    await authViewModel.idUserLoad();
   }
 
 }

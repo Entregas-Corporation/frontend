@@ -1,7 +1,6 @@
 import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
-import 'package:entregas/uikit/atomic/organisms/drawer/drawer_default.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';

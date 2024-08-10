@@ -37,7 +37,7 @@ class ProductSearchPage extends StatelessWidget {
           ),
           const Align(
             alignment: Alignment.centerRight,
-            child: FooterText(text: "10 ${TextConstant.result}"),
+            child: LabelText(text: "10 ${TextConstant.result}"),
           ),
           const SizedBox(
             height: 12,
@@ -45,7 +45,7 @@ class ProductSearchPage extends StatelessWidget {
           ListView.builder(
             itemCount: 10,
             shrinkWrap: true,
-            itemBuilder: (context, index) => CardDefault(
+            itemBuilder: (context, index) => const CardDefault(
               child: ListTile(
                 title: TitleText(text: "Title"),
                 subtitle: BodyText(text: "Subtitle"),

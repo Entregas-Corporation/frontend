@@ -1,5 +1,6 @@
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
+import 'package:entregas/app/core/controllers/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -14,6 +15,7 @@ class SplashPagePage extends StatefulWidget {
 class _SplashPageState extends State<SplashPagePage> {
   final authController = Injector.get<AuthController>();
   final routeController = Injector.get<RouteController>();
+  final userController = Injector.get<UserController>();
 
   @override
   void initState() {
@@ -25,7 +27,7 @@ class _SplashPageState extends State<SplashPagePage> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
-      if (authController.accessToken == null) {
+      if (authController.idUser == null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           Navigator.pushReplacementNamed(context, '/login');
         });

@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:entregas/app/core/constants/local_storage_constant.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:mobx/mobx.dart';
-
 import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/dtos/login_user_dto.dart';
 import 'package:entregas/app/core/dtos/register_user_dto.dart';
@@ -36,24 +37,29 @@ abstract class AuthViewModelBase with Store {
   GoogleSignInAccount? googleCredentials;
 
   @observable
-  String? accessToken;
+  String? idUser;
+
 
   @action
-  accessTokenLoad() async {
-    await localStoreService.get(LocalStorageConstant.authKey).then((value) {
-      if (value != null) accessToken = value;
+  Future<void> idUserLoad() async {
+    await localStoreService.get(LocalStorageConstant.idUser).then((value) {
+      if (value != null) idUser = value;
     });
   }
 
+
   @action
-  login() async {
+  Future<void> login() async {
     try {
       isLoading = true;
       googleCredentials = await socialAuthService.login();
-      LoginUserDto model = LoginUserDto(email: googleCredentials!.email);
+      final model = LoginUserDto(email: googleCredentials!.email);
       final response = await userRepository.login(model);
-      await localStoreService.put(
-          LocalStorageConstant.authKey, response.data['token']);
+      final accessToken = response.data['token'];
+      final payload = Jwt.parseJwt(accessToken);
+      idUser = payload['id'];
+      await localStoreService.put(LocalStorageConstant.authKey, accessToken);
+      await localStoreService.put(LocalStorageConstant.idUser, idUser);
     } on RestException catch (e) {
       if (e.response?.statusCode == 403) {
         await register();
@@ -67,20 +73,21 @@ abstract class AuthViewModelBase with Store {
   }
 
   @action
-  register() async {
+  Future<void> register() async {
     bool hasError = false;
     try {
       isLoading = true;
-      RegisterUserDto model = RegisterUserDto(
-          name: googleCredentials!.displayName!,
-          email: googleCredentials!.email,
-          image: googleCredentials?.photoUrl);
+      final model = RegisterUserDto(
+        name: googleCredentials!.displayName!,
+        email: googleCredentials!.email,
+        photo: googleCredentials?.photoUrl,
+      );
       await userRepository.register(model);
     } on RestException catch (e) {
       hasError = true;
       messageService.showMessageError(e.message);
     } finally {
-      isLoading = true;
+      isLoading = false;
       if (!hasError) {
         messageService.showMessageSuccess(TextConstant.accountVerification);
       }
@@ -88,9 +95,10 @@ abstract class AuthViewModelBase with Store {
   }
 
   @action
-  logout() async {
+  Future<void> logout() async {
+    await localStoreService.delete(LocalStorageConstant.idUser);
     await localStoreService.delete(LocalStorageConstant.authKey);
     await socialAuthService.logout();
-    await accessTokenLoad();
+    await idUserLoad();
   }
 }

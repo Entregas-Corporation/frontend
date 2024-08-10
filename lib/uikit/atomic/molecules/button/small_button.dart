@@ -2,25 +2,22 @@
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 
-class ProgressButton extends StatelessWidget {
-  final String? text;
-  final Widget? child;
+class SmallButton extends StatelessWidget {
+  final String text;
   final void Function()? onPressed;
-  const ProgressButton({
+  const SmallButton({
     super.key,
-    this.text,
-    this.child,
+    required this.text,
     this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return ButtonDefault(
-  
-      backgroundColor: LightColors.secondary,
-      foregroundColor: LightColors.onSecondary,
+      backgroundColor: LightColors.tertiary,
+      foregroundColor: LightColors.onPrimary,
       onPressed: onPressed,
-      child: child ?? BodyText(text: text!),
+      child: LabelText(text: text),
     );
   }
 }

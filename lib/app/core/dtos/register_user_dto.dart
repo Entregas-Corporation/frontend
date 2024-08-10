@@ -4,18 +4,18 @@ import 'dart:convert';
 class RegisterUserDto {
   final String name;
   final String email;
-  final String? image;
+  final String? photo;
   RegisterUserDto({
     required this.name,
     required this.email,
-    this.image,
+    this.photo,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
       'email': email,
-      'image': image,
+      'photo': photo,
     };
   }
 
@@ -23,22 +23,14 @@ class RegisterUserDto {
     return RegisterUserDto(
       name: map['name'] as String,
       email: map['email'] as String,
-      image: map['image'] != null ? map['image'] as String : null,
+      photo: map['photo'] != null ? map['photo'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory RegisterUserDto.fromJson(String source) =>
-      RegisterUserDto.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory RegisterUserDto.fromJson(String source) => RegisterUserDto.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  bool operator ==(covariant RegisterUserDto other) {
-    if (identical(this, other)) return true;
-
-    return other.name == name && other.email == email && other.image == image;
-  }
-
-  @override
-  int get hashCode => name.hashCode ^ email.hashCode ^ image.hashCode;
+  String toString() => 'RegisterUserDto(name: $name, email: $email, photo: $photo)';
 }

@@ -41,35 +41,35 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
     });
   }
 
-  late final _$accessTokenAtom =
-      Atom(name: 'AuthViewModelBase.accessToken', context: context);
+  late final _$idUserAtom =
+      Atom(name: 'AuthViewModelBase.idUser', context: context);
 
   @override
-  String? get accessToken {
-    _$accessTokenAtom.reportRead();
-    return super.accessToken;
+  String? get idUser {
+    _$idUserAtom.reportRead();
+    return super.idUser;
   }
 
   @override
-  set accessToken(String? value) {
-    _$accessTokenAtom.reportWrite(value, super.accessToken, () {
-      super.accessToken = value;
+  set idUser(String? value) {
+    _$idUserAtom.reportWrite(value, super.idUser, () {
+      super.idUser = value;
     });
   }
 
-  late final _$accessTokenLoadAsyncAction =
-      AsyncAction('AuthViewModelBase.accessTokenLoad', context: context);
+  late final _$idUserLoadAsyncAction =
+      AsyncAction('AuthViewModelBase.idUserLoad', context: context);
 
   @override
-  Future accessTokenLoad() {
-    return _$accessTokenLoadAsyncAction.run(() => super.accessTokenLoad());
+  Future<void> idUserLoad() {
+    return _$idUserLoadAsyncAction.run(() => super.idUserLoad());
   }
 
   late final _$loginAsyncAction =
       AsyncAction('AuthViewModelBase.login', context: context);
 
   @override
-  Future login() {
+  Future<void> login() {
     return _$loginAsyncAction.run(() => super.login());
   }
 
@@ -77,7 +77,7 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
       AsyncAction('AuthViewModelBase.register', context: context);
 
   @override
-  Future register() {
+  Future<void> register() {
     return _$registerAsyncAction.run(() => super.register());
   }
 
@@ -85,7 +85,7 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
       AsyncAction('AuthViewModelBase.logout', context: context);
 
   @override
-  Future logout() {
+  Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
@@ -94,7 +94,7 @@ mixin _$AuthViewModel on AuthViewModelBase, Store {
     return '''
 isLoading: ${isLoading},
 googleCredentials: ${googleCredentials},
-accessToken: ${accessToken}
+idUser: ${idUser}
     ''';
   }
 }

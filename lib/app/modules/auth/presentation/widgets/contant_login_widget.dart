@@ -54,7 +54,7 @@ class ContentLoginWidget extends StatelessWidget {
                 onPressed: () async {
                   await authController.login();
                   await routeController.routeUpdate('/home');
-                  if (authController.accessToken != null) {
+                  if (authController.idUser != null) {
                     Navigator.of(context).pushReplacementNamed('/home');
                   }
                 },

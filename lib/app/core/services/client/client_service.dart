@@ -1,6 +1,5 @@
 abstract interface class ClientService {
-  Future get(String url);
+  Future get(String url, {bool requiresAuth, String contentType});
   Future post(String url, Object data);
-  Future delete(String url);
   Future put(String url, Object data);
 }

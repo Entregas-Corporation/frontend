@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:flutter/material.dart';
 
 import 'package:entregas/uikit/uikit.dart';
@@ -33,38 +34,38 @@ class DrawerDefault extends StatelessWidget {
         Column(
           children: [
             MenuItem(
-              text: "Home",
+              text: TextConstant.home,
               icon: const Icon(Icons.home_outlined),
               onPressed: home,
             ),
             MenuItem(
-              text: "Meus Locais",
+              text: TextConstant.myLocations,
               icon: const Icon(Icons.fmd_good_outlined),
               onPressed: myLocation,
             ),
             MenuItem(
-              text: "Minha Conta",
+              text: TextConstant.myAccount,
               icon: const Icon(Icons.person_pin_outlined),
               onPressed: myAccount,
             ),
             const DividerDefault(),
             MenuItem(
-              text: "Produtos",
+              text: TextConstant.products,
               icon: const Icon(Icons.sell_outlined),
               onPressed: product,
             ),
             MenuItem(
-              text: "Serviços",
+              text: TextConstant.services,
               icon: const Icon(Icons.work_history_outlined),
               onPressed: service,
             ),
             MenuItem(
-              text: "Lojas",
+              text: TextConstant.stores,
               icon: const Icon(Icons.store_mall_directory_outlined),
               onPressed: product,
             ),
             MenuItem(
-              text: "Suporte",
+              text: TextConstant.support,
               icon: const Icon(Icons.contact_support_outlined),
               onPressed: support,
             ),
@@ -74,7 +75,7 @@ class DrawerDefault extends StatelessWidget {
           children: [
             const DividerDefault(),
             MenuItem(
-              text: "Sair",
+              text: TextConstant.logout,
               icon: const Icon(Icons.logout),
               onPressed: logout,
             ),

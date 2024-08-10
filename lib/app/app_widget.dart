@@ -1,5 +1,6 @@
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
+import 'package:entregas/app/core/controllers/user/user_controller.dart';
 import 'package:entregas/app/core/repositories/user_repository.dart';
 import 'package:entregas/app/core/repositories/user_repository_impl.dart';
 import 'package:entregas/app/core/services/auth/social/google_auth_service_impl.dart';
@@ -10,7 +11,8 @@ import 'package:entregas/app/core/services/local/local_store_service.dart';
 import 'package:entregas/app/core/services/local/local_store_service_impl.dart';
 import 'package:entregas/app/core/services/messages/message_service.dart';
 import 'package:entregas/app/core/services/messages/message_service_impl.dart';
-import 'package:entregas/app/core/viewmodels/auth_view_model.dart';
+import 'package:entregas/app/core/viewmodels/auth/auth_view_model.dart';
+import 'package:entregas/app/core/viewmodels/user/user_view_model.dart';
 import 'package:entregas/app/modules/auth/auth_module.dart';
 import 'package:entregas/app/modules/home/home_module.dart';
 import 'package:entregas/app/modules/search/search_module.dart';
@@ -28,8 +30,11 @@ class AppWidget extends StatelessWidget {
     return FlutterGetIt(
       bindingsBuilder: () {
         return [
+          Bind.singleton<LocalStoreService>(
+            (i) => LocalStoreServiceImpl(),
+          ),
           Bind.singleton<ClientService>(
-            (i) => ClientServiceImpl(),
+            (i) => ClientServiceImpl(i()),
           ),
           Bind.singleton<SocialAuthService>(
             (i) => GoogleAuthServiceImpl(),
@@ -47,9 +52,6 @@ class AppWidget extends StatelessWidget {
               clientService: i(),
             ),
           ),
-          Bind.singleton<LocalStoreService>(
-            (i) => LocalStoreServiceImpl(),
-          ),
           Bind.singleton(
             (i) => AuthViewModel(
               userRepository: i(),
@@ -66,6 +68,18 @@ class AppWidget extends StatelessWidget {
               localStoreService: i(),
             ),
           ),
+          Bind.singleton(
+            (i) => UserViewModel(
+              repository: i(),
+              messageService: i(),
+              localStoreService: i(),
+            ),
+          ),
+          Bind.singleton(
+            (i) => UserController(
+              viewModel: i(),
+            ),
+          )
         ];
       },
       modules: [

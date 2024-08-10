@@ -1,5 +1,6 @@
 import 'package:entregas/app/core/constants/social_constant.dart';
 import 'package:entregas/app/core/constants/text_constant.dart';
+import 'package:entregas/uikit/atomic/molecules/text/footer_text.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

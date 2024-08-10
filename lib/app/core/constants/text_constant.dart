@@ -15,4 +15,14 @@ final class TextConstant {
   static const String back = 'Voltar';
   static const String result = 'resultados';
   static String developmentBy = 'Desenvolvido por';
+  static String home = 'Home';
+  static String myLocations = 'Meus Locais';
+  static String myAccount = 'Minha Conta';
+  static String products = 'Produtos';
+  static String services = 'Serviços';
+  static String stores = 'Lojas';
+  static String support = 'Suporte';
+  static String logout = 'Sair';
+  static String happyMessage = 'É um prazer te ver por aqui.';
+  static String happyQuestion = 'O que vai ser hoje?';
 }
