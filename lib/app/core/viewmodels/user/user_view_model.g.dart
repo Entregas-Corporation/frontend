@@ -25,22 +25,6 @@ mixin _$UserViewModel on UserViewModelBase, Store {
     });
   }
 
-  late final _$accessTokenAtom =
-      Atom(name: 'UserViewModelBase.accessToken', context: context);
-
-  @override
-  String? get accessToken {
-    _$accessTokenAtom.reportRead();
-    return super.accessToken;
-  }
-
-  @override
-  set accessToken(String? value) {
-    _$accessTokenAtom.reportWrite(value, super.accessToken, () {
-      super.accessToken = value;
-    });
-  }
-
   late final _$isLoadingAtom =
       Atom(name: 'UserViewModelBase.isLoading', context: context);
 
@@ -57,14 +41,6 @@ mixin _$UserViewModel on UserViewModelBase, Store {
     });
   }
 
-  late final _$accessTokenLoadAsyncAction =
-      AsyncAction('UserViewModelBase.accessTokenLoad', context: context);
-
-  @override
-  Future<void> accessTokenLoad() {
-    return _$accessTokenLoadAsyncAction.run(() => super.accessTokenLoad());
-  }
-
   late final _$detailAsyncAction =
       AsyncAction('UserViewModelBase.detail', context: context);
 
@@ -77,7 +53,6 @@ mixin _$UserViewModel on UserViewModelBase, Store {
   String toString() {
     return '''
 user: ${user},
-accessToken: ${accessToken},
 isLoading: ${isLoading}
     ''';
   }

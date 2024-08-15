@@ -23,7 +23,6 @@ abstract class UserControllerBase with Store {
 
   @action
   detail() async {
-    await viewModel.accessTokenLoad();
     await viewModel.detail(authController.idUser!);
   }
 }

@@ -72,7 +72,6 @@ class AppWidget extends StatelessWidget {
             (i) => UserViewModel(
               repository: i(),
               messageService: i(),
-              localStoreService: i(),
             ),
           ),
           Bind.singleton(

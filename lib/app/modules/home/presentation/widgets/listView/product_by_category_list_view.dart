@@ -1,5 +1,14 @@
+import 'package:entregas/app/modules/home/dto/product/product_detail_dto.dart';
+import 'package:entregas/app/modules/home/dto/product/product_page_dto.dart';
+import 'package:entregas/app/modules/home/dto/productCategory/product_category_detail_dto.dart';
+import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
+import 'package:entregas/app/modules/home/presentation/controllers/product_category/product_category_controller.dart';
+import 'package:entregas/app/modules/home/presentation/widgets/listView/item_product.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_getit/flutter_getit.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class ProductByCategoryListView extends StatefulWidget {
   const ProductByCategoryListView({super.key});
@@ -10,57 +19,63 @@ class ProductByCategoryListView extends StatefulWidget {
 }
 
 class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
+  final productCategoryController = Injector.get<ProductCategoryController>();
+
+  @override
+  void initState() {
+    super.initState();
+    productCategoryController.init();
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 5,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      separatorBuilder: (context, index) => const Padding(
-        padding: EdgeInsets.all(Scale.xs),
-        child: Divider(
-          color: LightColors.tertiary,
+    return Observer(builder: (context) {
+      return ListView.separated(
+        itemCount: productCategoryController.productListPage != null
+            ? productCategoryController
+                .productListPage!.productCategoryDto.length
+            : 0,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        separatorBuilder: (_, index) => const Padding(
+          padding: EdgeInsets.all(Scale.xs),
+          child: Divider(color: LightColors.tertiary),
         ),
-      ),
-      itemBuilder: (context, index) => Column(
-        children: [
-          CardDefault(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        itemBuilder: (context, index) {
+          final categoryModel = productCategoryController
+              .productListPage!.productCategoryDto[index];
+
+          return Column(
+            children: [
+              CardDefault(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
                     children: [
-                      const TitleText(text: "Categoria"),
-                      InkWell(
-                        onTap: () {},
-                        child: const Icon(Icons.keyboard_arrow_right_rounded),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: TitleText(text: categoryModel.name),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child:
+                                const Icon(Icons.keyboard_arrow_right_rounded),
+                          ),
+                        ],
                       ),
+                      const DividerDefault(),
+                      ItemProduct(id: categoryModel.id)
                     ],
                   ),
-                  const DividerDefault(),
-                  GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: Scale.xs,
-                            mainAxisSpacing: Scale.xs),
-                    itemCount: 4,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => const CardDefault(
-                      child: SizedBox(
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-        ],
-      ),
-    );
+            ],
+          );
+        },
+      );
+    });
   }
 }
