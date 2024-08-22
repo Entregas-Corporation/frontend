@@ -25,8 +25,8 @@ class _StoreListViewState extends State<StoreListView> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: LightColors.tertiary, // Cor da borda
-                width: 2, // Largura da borda
+                color: LightColors.tertiary,
+                width: 2,
               ),
               color: LightColors.tertiary,
               image: const DecorationImage(

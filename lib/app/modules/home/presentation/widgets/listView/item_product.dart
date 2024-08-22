@@ -1,31 +1,28 @@
-import 'package:entregas/app/modules/home/dto/product/product_detail_dto.dart';
-import 'package:entregas/uikit/uikit.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
-
-import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'package:entregas/app/modules/home/dto/product/product_detail_dto.dart';
+import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
+import 'package:entregas/uikit/uikit.dart';
 
 class ItemProduct extends StatefulWidget {
   final String id;
-  
   const ItemProduct({
     super.key,
     required this.id,
   });
 
   @override
-  _ItemProductState createState() => _ItemProductState();
+  State<ItemProduct> createState() => _ItemProductState();
 }
 
 class _ItemProductState extends State<ItemProduct> {
-  late final ProductController productController;
-
+  final productController = Injector.get<ProductController>();
   @override
   void initState() {
     super.initState();
-    productController = Injector.get<ProductController>();
-    // Inicializa os produtos quando o widget for criado
     productController.initProductByProductCategory(widget.id);
   }
 
@@ -35,8 +32,7 @@ class _ItemProductState extends State<ItemProduct> {
       final productPageDto = productController.productPageDto;
 
       if (productPageDto == null) {
-        // Mostrar um widget de carregamento ou vazio
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       }
 
       return GridView.builder(
@@ -44,7 +40,7 @@ class _ItemProductState extends State<ItemProduct> {
           crossAxisCount: 2,
           crossAxisSpacing: Scale.xs,
           mainAxisSpacing: Scale.xs,
-          mainAxisExtent: 150,
+          mainAxisExtent: 153,
         ),
         itemCount: productPageDto.productDto.length,
         physics: const NeverScrollableScrollPhysics(),
@@ -52,21 +48,50 @@ class _ItemProductState extends State<ItemProduct> {
         itemBuilder: (context, index) {
           final ProductDetailDto model = productPageDto.productDto[index];
           return CardDefault(
+            borderRadius: Scale.xs,
             child: Column(
               children: [
                 Container(
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(Scale.md),
-                      topRight: Radius.circular(Scale.md),
-                    ),
-                  ),
-                  child: BodyText(text: model.name),
+                      image: DecorationImage(
+                          image: NetworkImage(model.image),
+                          fit: BoxFit.contain)),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(Scale.xxs),
+                  padding: const EdgeInsets.fromLTRB(
+                    Scale.xs,
+                    Scale.xs,
+                    Scale.xs,
+                    Scale.xxs,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LabelText(
+                        text: "${model.name}${model.name}${model.name}",
+                        overflow: true,
+                        maxLines: 1,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          BodyText(
+                            text:
+                                "R\$ ${model.price.toStringAsFixed(2).replaceAll('.', ',')}",
+                            overflow: true,
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: const Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              size: Scale.md,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -74,5 +99,13 @@ class _ItemProductState extends State<ItemProduct> {
         },
       );
     });
+  }
+
+  ItemProduct copyWith({
+    String? id,
+  }) {
+    return ItemProduct(
+      id: id ?? this.widget.id,
+    );
   }
 }

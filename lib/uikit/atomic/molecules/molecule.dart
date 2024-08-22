@@ -4,6 +4,7 @@ export 'text/headline_text.dart';
 export 'text/title_text.dart';
 export 'text/body_text.dart';
 export 'text/label_text.dart';
+export 'text/footer_text.dart';
 
 export 'button/small_button.dart';
 export 'button/cancel_button.dart';

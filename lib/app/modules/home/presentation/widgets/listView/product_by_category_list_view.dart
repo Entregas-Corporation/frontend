@@ -1,12 +1,7 @@
-import 'package:entregas/app/modules/home/dto/product/product_detail_dto.dart';
-import 'package:entregas/app/modules/home/dto/product/product_page_dto.dart';
-import 'package:entregas/app/modules/home/dto/productCategory/product_category_detail_dto.dart';
-import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product_category/product_category_controller.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/listView/item_product.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

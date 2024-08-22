@@ -5,11 +5,13 @@ import 'package:entregas/uikit/atomic/atoms/atom.dart';
 import 'package:entregas/uikit/tokens/typhography/style.dart';
 
 class HeadlineText extends StatelessWidget {
+  final int? maxLines;
   final String text;
   final bool overflow;
   final Color? color;
   const HeadlineText({
     super.key,
+    this.maxLines,
     required this.text,
     this.overflow = false,
     this.color,
@@ -21,6 +23,7 @@ class HeadlineText extends StatelessWidget {
       text: text,
       textStyle: Style.headline(color: color),
       overflow: overflow,
+      maxLines: maxLines,
     );
   }
 }

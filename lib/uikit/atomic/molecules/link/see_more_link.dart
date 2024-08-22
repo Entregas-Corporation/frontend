@@ -19,7 +19,7 @@ class SeeMoreLink extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          LabelText(text: text),
+          FooterText(text: text,),
           const Icon(
             Icons.keyboard_arrow_right_rounded,
             size: Scale.sm,

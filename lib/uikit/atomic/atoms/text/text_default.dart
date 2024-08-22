@@ -5,11 +5,12 @@ class TextDefault extends StatelessWidget {
   final String text;
   final bool overflow;
   final TextStyle textStyle;
+  final int? maxLines;
   const TextDefault({
     super.key,
     required this.text,
     this.overflow = false,
-    required this.textStyle,
+    required this.textStyle, this.maxLines,
   });
 
   @override
@@ -19,6 +20,7 @@ class TextDefault extends StatelessWidget {
       softWrap: true,
       overflow: overflow ? TextOverflow.ellipsis : null,
       style: textStyle,
+      maxLines: maxLines,
     );
   }
 }

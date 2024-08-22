@@ -5,17 +5,18 @@ import 'package:entregas/uikit/atomic/atoms/atom.dart';
 import 'package:entregas/uikit/tokens/typhography/style.dart';
 
 class LabelText extends StatelessWidget {
+  final int? maxLines;
   final String text;
   final bool overflow;
   final Color? color;
 
   const LabelText({
     super.key,
+    this.maxLines,
     required this.text,
     this.overflow = false,
     this.color,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class LabelText extends StatelessWidget {
       text: text,
       textStyle: Style.label(color: color),
       overflow: overflow,
+      maxLines: maxLines,
     );
   }
 }

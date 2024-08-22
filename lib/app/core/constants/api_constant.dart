@@ -1,5 +1,5 @@
 final class ApiConstant {
-  static const String baseURI = "http://68.154.97.1:8080";
+  static const String baseURI = "http://localhost:8080";
 
   static const String userLogin = "$baseURI/user/login";
   static const String userRegister = "$baseURI/user/register";
@@ -7,6 +7,9 @@ final class ApiConstant {
 
   static const String listProductCategory =
       "$baseURI/product-category/list/valid";
+  
   static const String listProductByProductCategory =
-      "/product/list/product-category/valid";
+      "$baseURI/product/list/product-category/valid";
+
+  static const String listInstituteValid = "$baseURI/institute/list/valid";
 }
