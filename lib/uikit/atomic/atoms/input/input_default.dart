@@ -44,38 +44,37 @@ class InputDefault extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: LightColors.onPrimary, width: 2),
         ),
         errorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
-
+          borderSide: BorderSide(color: LightColors.error, width: 2),
         ),
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: LightColors.tertiary, width: 2),
         ),
         disabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: LightColors.tertiary, width: 2),
         ),
         focusedErrorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: LightColors.error, width: 2),
         ),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(Scale.xs),
           ),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: LightColors.tertiary, width: 2),
         ),
         hintText: hintText,
       ),

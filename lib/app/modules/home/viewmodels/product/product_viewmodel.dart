@@ -3,7 +3,7 @@ import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:entregas/app/core/services/messages/message_service.dart';
-import 'package:entregas/app/modules/home/dto/product/product_page_dto.dart';
+import 'package:entregas/app/core/dtos/product/product_page_dto.dart';
 import 'package:entregas/app/modules/home/repositories/product/product_repository.dart';
 
 part 'product_viewmodel.g.dart';

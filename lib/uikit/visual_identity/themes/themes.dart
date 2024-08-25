@@ -34,7 +34,6 @@ ThemeData get ligthTheme => ThemeData(
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: _lightColorScheme.tertiary,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: _lightColorScheme.onPrimary,

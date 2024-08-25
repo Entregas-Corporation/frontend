@@ -35,7 +35,7 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
         shrinkWrap: true,
         separatorBuilder: (_, index) => const Padding(
           padding: EdgeInsets.all(Scale.xs),
-          child: Divider(color: LightColors.tertiary),
+          child: DividerDefault(),
         ),
         itemBuilder: (context, index) {
           final categoryModel = productCategoryController

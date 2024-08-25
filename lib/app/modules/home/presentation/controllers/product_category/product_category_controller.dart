@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:entregas/app/modules/home/dto/productCategory/product_category_page_dto.dart';
+import 'package:entregas/app/core/dtos/productCategory/product_category_page_dto.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:entregas/app/modules/home/viewmodels/productCategory/product_category_viewmodel.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:entregas/app/modules/home/dto/product/product_detail_dto.dart';
+import 'package:entregas/app/core/dtos/product/product_detail_dto.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
 import 'package:entregas/uikit/uikit.dart';
 
@@ -42,7 +42,9 @@ class _ItemProductState extends State<ItemProduct> {
           mainAxisSpacing: Scale.xs,
           mainAxisExtent: 153,
         ),
-        itemCount: productPageDto.productDto.length,
+        itemCount: productPageDto.productDto.length > 4
+            ? 4
+            : productPageDto.productDto.length,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemBuilder: (context, index) {
@@ -69,7 +71,7 @@ class _ItemProductState extends State<ItemProduct> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       LabelText(
-                        text: "${model.name}${model.name}${model.name}",
+                        text: model.name,
                         overflow: true,
                         maxLines: 1,
                       ),

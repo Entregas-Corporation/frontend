@@ -25,4 +25,5 @@ final class TextConstant {
   static String logout = 'Sair';
   static String happyMessage = 'É um prazer te ver por aqui.';
   static String happyQuestion = 'O que vai ser hoje?';
+  static String available = 'disponíveis';
 }

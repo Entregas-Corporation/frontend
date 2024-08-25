@@ -1,10 +1,14 @@
 import 'package:entregas/app/modules/home/home_route.dart';
+import 'package:entregas/app/modules/home/presentation/controllers/institute/institute_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product_category/product_category_controller.dart';
+import 'package:entregas/app/modules/home/repositories/institute/institute_repository.dart';
+import 'package:entregas/app/modules/home/repositories/institute/institute_repository_impl.dart';
 import 'package:entregas/app/modules/home/repositories/product/product_repository.dart';
 import 'package:entregas/app/modules/home/repositories/product/product_repository_impl.dart';
 import 'package:entregas/app/modules/home/repositories/productCategory/produc_category_repository.dart';
 import 'package:entregas/app/modules/home/repositories/productCategory/produc_category_repository_impl.dart';
+import 'package:entregas/app/modules/home/viewmodels/institute/institute_viewmodel.dart';
 import 'package:entregas/app/modules/home/viewmodels/product/product_viewmodel.dart';
 import 'package:entregas/app/modules/home/viewmodels/productCategory/product_category_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +42,22 @@ class HomeModule extends FlutterGetItModule {
             (i) => ProductViewmodel(repository: i(), messageService: i())),
         Bind.lazySingleton(
           (i) => ProductController(
+            viewmodel: i(),
+          ),
+        ),
+        Bind.lazySingleton<InstituteRepository>(
+          (i) => InstituteRepositoryImpl(
+            service: i(),
+          ),
+        ),
+        Bind.lazySingleton(
+          (i) => InstituteViewmodel(
+            repository: i(),
+            messageService: i(),
+          ),
+        ),
+        Bind.lazySingleton(
+          (i) => InstituteController(
             viewmodel: i(),
           ),
         )

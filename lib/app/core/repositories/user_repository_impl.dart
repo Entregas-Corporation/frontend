@@ -2,12 +2,12 @@
 import 'package:dio/dio.dart';
 import 'package:entregas/app/core/constants/api_constant.dart';
 import 'package:entregas/app/core/constants/text_constant.dart';
-import 'package:entregas/app/core/dtos/detail_user_dto.dart';
-import 'package:entregas/app/core/dtos/login_user_dto.dart';
+import 'package:entregas/app/core/dtos/user/detail_user_dto.dart';
+import 'package:entregas/app/core/dtos/user/login_user_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 
 import 'package:entregas/app/core/services/client/client_service.dart';
-import 'package:entregas/app/core/dtos/register_user_dto.dart';
+import 'package:entregas/app/core/dtos/user/register_user_dto.dart';
 
 import 'user_repository.dart';
 
