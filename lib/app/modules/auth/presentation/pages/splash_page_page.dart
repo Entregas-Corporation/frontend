@@ -22,17 +22,18 @@ class _SplashPageState extends State<SplashPagePage> {
     super.initState();
     authController.accessTokenLoad();
     routeController.routeGet();
+    userController.detail();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
       if (authController.idUser == null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+        Future.microtask(() {
           Navigator.pushReplacementNamed(context, '/login');
         });
       } else {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+        Future.microtask(() {
           Navigator.pushReplacementNamed(
             context,
             routeController.route ?? '/home',

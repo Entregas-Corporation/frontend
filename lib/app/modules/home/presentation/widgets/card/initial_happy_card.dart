@@ -1,4 +1,6 @@
 import 'package:entregas/app/core/constants/text_constant.dart';
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:entregas/app/core/controllers/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
@@ -14,7 +16,8 @@ class InitialHappyCard extends StatefulWidget {
 
 class _InitialHappyCardState extends State<InitialHappyCard> {
   final userController = Injector.get<UserController>();
-
+  final authController = Injector.get<AuthController>();
+  final routeController = Injector.get<RouteController>();
   @override
   void initState() {
     super.initState();
@@ -37,6 +40,9 @@ class _InitialHappyCardState extends State<InitialHappyCard> {
                 children: [
                   Observer(
                     builder: (_) {
+                      if (userController.user?.name == null) {
+                        return const CircularProgressIndicator();
+                      }
                       return HeadlineText(
                         text:
                             "${TextConstant.hello}, ${userController.user?.name}!",
@@ -80,7 +86,10 @@ class _InitialHappyCardState extends State<InitialHappyCard> {
                             height: 30,
                             child: SmallButton(
                               text: TextConstant.myLocations,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).pushReplacementNamed(
+                                    '/search/institute/by/user');
+                              },
                             ),
                           ),
                           const SizedBox(
@@ -90,28 +99,17 @@ class _InitialHappyCardState extends State<InitialHappyCard> {
                             height: 30,
                             child: SmallButton(
                               text: TextConstant.products,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/search/product');
+                              },
                             ),
                           ),
                           const SizedBox(
                             width: Scale.xs,
                           ),
-                          SizedBox(
-                            height: 30,
-                            child: SmallButton(
-                              text: TextConstant.services,
-                              onPressed: () {},
-                            ),
-                          ),
                           const SizedBox(
                             width: Scale.xs,
-                          ),
-                          SizedBox(
-                            height: 30,
-                            child: SmallButton(
-                              text: TextConstant.support,
-                              onPressed: () {},
-                            ),
                           ),
                         ],
                       ),

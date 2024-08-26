@@ -48,22 +48,12 @@ class DrawerWidget extends StatelessWidget {
                       .pushReplacementNamed(routeController.route.toString());
                 },
                 myLocation: () async {
-                  await routeController.routeUpdate('/my-location');
-                  await routeController.routeGet();
                   Navigator.of(context)
-                      .pushReplacementNamed(routeController.route.toString());
+                      .pushReplacementNamed('/search/institute/by/user');
                 },
                 product: () async {
-                  await routeController.routeUpdate('/search/product');
-                  await routeController.routeGet();
                   Navigator.of(context)
-                      .pushReplacementNamed(routeController.route.toString());
-                },
-                service: () async {
-                  await routeController.routeUpdate('/service');
-                  await routeController.routeGet();
-                  Navigator.of(context)
-                      .pushReplacementNamed(routeController.route.toString());
+                      .pushReplacementNamed('/search/product');
                 },
                 store: () async {
                   await routeController.routeUpdate('/store');
@@ -73,12 +63,6 @@ class DrawerWidget extends StatelessWidget {
                 },
                 myAccount: () async {
                   await routeController.routeUpdate('/my-account');
-                  await routeController.routeGet();
-                  Navigator.of(context)
-                      .pushReplacementNamed(routeController.route.toString());
-                },
-                support: () async {
-                  await routeController.routeUpdate('/support');
                   await routeController.routeGet();
                   Navigator.of(context)
                       .pushReplacementNamed(routeController.route.toString());

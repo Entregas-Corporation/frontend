@@ -53,4 +53,18 @@ abstract class ProductViewmodelBase with Store {
       filterProductPageList = productPageList?.productDto;
     }
   }
+
+  @action
+  Future<void> listProductByProdcutCategory(String productCategoryId) async {
+    try {
+      isLoading = true;
+      productPageList =
+          await repository.findAllPageByProductCategory(productCategoryId);
+      filterProductPageList = productPageList?.productDto;
+    } on RestException catch (e) {
+      messageService.showMessageError(e.message);
+    } finally {
+      isLoading = false;
+    }
+  }
 }

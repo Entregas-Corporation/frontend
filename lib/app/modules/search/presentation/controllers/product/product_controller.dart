@@ -27,4 +27,9 @@ abstract class ProductControllerBase with Store {
   filter(String value) {
     viewmodel.filterListProducPage(value);
   }
+
+  @action
+  initProductByProductCategory(String productCategoryId) async {
+    await viewmodel.listProductByProdcutCategory(productCategoryId);
+  }
 }

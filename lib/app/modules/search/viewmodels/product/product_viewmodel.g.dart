@@ -66,6 +66,16 @@ mixin _$ProductViewmodel on ProductViewmodelBase, Store {
     return _$listProductPageAsyncAction.run(() => super.listProductPage());
   }
 
+  late final _$listProductByProdcutCategoryAsyncAction = AsyncAction(
+      'ProductViewmodelBase.listProductByProdcutCategory',
+      context: context);
+
+  @override
+  Future<void> listProductByProdcutCategory(String productCategoryId) {
+    return _$listProductByProdcutCategoryAsyncAction
+        .run(() => super.listProductByProdcutCategory(productCategoryId));
+  }
+
   late final _$ProductViewmodelBaseActionController =
       ActionController(name: 'ProductViewmodelBase', context: context);
 

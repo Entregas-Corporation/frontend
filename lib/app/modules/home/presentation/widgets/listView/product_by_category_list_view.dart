@@ -1,3 +1,5 @@
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product_category/product_category_controller.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/listView/item_product.dart';
 import 'package:entregas/uikit/uikit.dart';
@@ -15,12 +17,13 @@ class ProductByCategoryListView extends StatefulWidget {
 
 class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
   final productCategoryController = Injector.get<ProductCategoryController>();
+  final authController = Injector.get<AuthController>();
+  final routeController = Injector.get<RouteController>();
 
   @override
   void initState() {
     super.initState();
     productCategoryController.init();
-
   }
 
   @override
@@ -55,7 +58,15 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
                             child: TitleText(text: categoryModel.name),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).pushReplacementNamed(
+                                '/search/product/by/product-category',
+                                arguments: {
+                                  'productCategoryId': categoryModel.id,
+                                  'productCategoryName': categoryModel.name
+                                },
+                              );
+                            },
                             child:
                                 const Icon(Icons.keyboard_arrow_right_rounded),
                           ),

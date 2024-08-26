@@ -9,6 +9,7 @@ final class TextConstant {
   static const String search = 'Pesquisar';
   static const String searchPlaceholder = 'Pesquisar...';
   static const String searchProduct = 'Pesquisa de Produto';
+  static const String searchInstitute = 'Pesquisa de Loja';
   static const String cart = 'Carrinho';
   static const String hello = 'Olá';
   static const String seeMoreStores = 'ver mais lojas';
@@ -26,4 +27,7 @@ final class TextConstant {
   static String happyMessage = 'É um prazer te ver por aqui.';
   static String happyQuestion = 'O que vai ser hoje?';
   static String available = 'disponíveis';
+  static String productNotFound = 'Produto não encontrado!';
+  static String instituteNotFound = 'Loja não encontrada!';
+  static String locationNotFound = 'Local não encontrado!';
 }

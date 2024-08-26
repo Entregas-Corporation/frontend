@@ -1,7 +1,6 @@
 import 'package:entregas/app/modules/home/presentation/widgets/appBarAction/app_bar_action_widget.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/card/initial_happy_card.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/drawer/drawer_widget.dart';
-import 'package:entregas/app/modules/home/presentation/widgets/link/see_more_store_link.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/listView/product_by_category_list_view.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/listView/store_list_view.dart';
 import 'package:flutter/material.dart';
@@ -33,10 +32,6 @@ class HomePage extends StatelessWidget {
               height: Scale.md,
             ),
             StoreListView(),
-            SizedBox(
-              height: Scale.xs,
-            ),
-            SeeMoreStoreLink(),
             SizedBox(
               height: Scale.md,
             ),

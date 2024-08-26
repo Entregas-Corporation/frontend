@@ -1,4 +1,5 @@
 import 'package:entregas/app/modules/home/presentation/controllers/institute/institute_controller.dart';
+import 'package:entregas/app/modules/home/presentation/widgets/link/see_more_store_link.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
@@ -22,42 +23,52 @@ class _StoreListViewState extends State<StoreListView> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      child: Observer(builder: (context) {
-        final institutePageDto = instituteController.instituteListPage;
-        if (institutePageDto == null) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        return ListView.builder(
-            itemCount:
-                institutePageDto.instituteDto.length,
-            shrinkWrap: false,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              final model =
-                  institutePageDto.instituteDto[index];
-              return Padding(
-                padding: const EdgeInsets.only(left: Scale.xs),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: LightColors.tertiary,
-                      width: 2,
+    return Column(
+      children: [
+        SizedBox(
+          height: 40,
+          child: Observer(builder: (context) {
+            final institutePageDto = instituteController.instituteListPage;
+            if (institutePageDto == null) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView.builder(
+                itemCount: institutePageDto.instituteDto.length,
+                shrinkWrap: false,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  final model = institutePageDto.instituteDto[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(left: Scale.xs),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: LightColors.tertiary,
+                          width: 2,
+                        ),
+                        color: LightColors.tertiary,
+                        image: DecorationImage(
+                          image: NetworkImage(model.image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                    color: LightColors.tertiary,
-                    image: DecorationImage(
-                      image: NetworkImage(model.image),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              );
-            });
-      }),
+                  );
+                });
+          }),
+        ),
+        const SizedBox(
+          height: Scale.xs,
+        ),
+        SeeMoreStoreLink(
+          onTap: () => Navigator.of(context).pushReplacementNamed(
+            '/search/institute',
+          ),
+        ),
+      ],
     );
   }
 }

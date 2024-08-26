@@ -45,8 +45,8 @@ mixin _$UserViewModel on UserViewModelBase, Store {
       AsyncAction('UserViewModelBase.detail', context: context);
 
   @override
-  Future<void> detail(String id) {
-    return _$detailAsyncAction.run(() => super.detail(id));
+  Future<void> detail() {
+    return _$detailAsyncAction.run(() => super.detail());
   }
 
   @override

@@ -25,6 +25,16 @@ mixin _$ProductController on ProductControllerBase, Store {
     return _$initAsyncAction.run(() => super.init());
   }
 
+  late final _$initProductByProductCategoryAsyncAction = AsyncAction(
+      'ProductControllerBase.initProductByProductCategory',
+      context: context);
+
+  @override
+  Future initProductByProductCategory(String productCategoryId) {
+    return _$initProductByProductCategoryAsyncAction
+        .run(() => super.initProductByProductCategory(productCategoryId));
+  }
+
   late final _$ProductControllerBaseActionController =
       ActionController(name: 'ProductControllerBase', context: context);
 

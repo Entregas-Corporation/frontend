@@ -25,4 +25,18 @@ class ProductRepositoryImpl implements ProductRepository {
       throw RestException(TextConstant.serverError, e.hashCode, e.response);
     }
   }
+  
+  @override
+  Future<ProductPageDto> findAllPageByProductCategory(String id) async{
+     try {
+      final Response response = await service.get(
+        "${ApiConstant.listProductByProductCategory}/$id",
+        requiresAuth: true,
+        contentType: 'application/json',
+      );
+      return ProductPageDto.fromMap(response.data);
+    } on DioException catch (e) {
+      throw RestException(TextConstant.serverError, e.hashCode, e.response);
+    }
+  }
 }

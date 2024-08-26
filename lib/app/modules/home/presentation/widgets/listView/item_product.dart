@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:entregas/app/core/widgets/item/product/item_product_vertical.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -49,65 +50,9 @@ class _ItemProductState extends State<ItemProduct> {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final ProductDetailDto model = productPageDto.productDto[index];
-          return CardDefault(
-            borderRadius: Scale.xs,
-            child: Column(
-              children: [
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(model.image),
-                          fit: BoxFit.contain)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    Scale.xs,
-                    Scale.xs,
-                    Scale.xs,
-                    Scale.xxs,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LabelText(
-                        text: model.name,
-                        overflow: true,
-                        maxLines: 1,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          BodyText(
-                            text:
-                                "R\$ ${model.price.toStringAsFixed(2).replaceAll('.', ',')}",
-                            overflow: true,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: const Icon(
-                              Icons.keyboard_arrow_right_rounded,
-                              size: Scale.md,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
+          return ItemProductVertical(model: model);
         },
       );
     });
-  }
-
-  ItemProduct copyWith({
-    String? id,
-  }) {
-    return ItemProduct(
-      id: id ?? this.widget.id,
-    );
   }
 }
