@@ -1,19 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:entregas/app/core/dtos/institute/institute_detail_dto.dart';
+import 'package:entregas/uikit/uikit.dart';
 
 class ItemInstituteHorizontal extends StatelessWidget {
   final InstituteDetailDto model;
+  final void Function() onTap;
   const ItemInstituteHorizontal({
     super.key,
     required this.model,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return CardDefault(
+      onTap: onTap,
       borderRadius: Scale.sm,
       child: Container(
         padding: const EdgeInsets.all(Scale.sm),

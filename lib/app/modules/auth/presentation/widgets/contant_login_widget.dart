@@ -28,7 +28,7 @@ class ContentLoginWidget extends StatelessWidget {
           const SizedBox(
             height: Scale.xs,
           ),
-          Image.network(
+          Image.asset(
             "assets/images/delivery_login.gif",
             height: 180,
           ),

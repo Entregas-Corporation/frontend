@@ -11,8 +11,12 @@ final class ApiConstant {
   static const String listProductValid = "$baseURI/product/list/valid";
   static const String listProductByProductCategory =
       "$baseURI/product/list/product-category/valid";
+  static const String listProductByInstitute =
+      "$baseURI/product/list/institute/valid";
 
   static const String listInstituteValid = "$baseURI/institute/list/valid";
   static const String listInstituteValidByUser =
       "$baseURI/institute/list/user/valid";
+  static const String detailInstitute = "$baseURI/institute/detail";
+  static const String registerInstitute = "$baseURI/institute/register";
 }

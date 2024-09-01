@@ -38,21 +38,29 @@ class _StoreListViewState extends State<StoreListView> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final model = institutePageDto.instituteDto[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(left: Scale.xs),
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: LightColors.tertiary,
-                          width: 2,
+                  return InkWell(
+                    onTap: () => Navigator.of(context).pushReplacementNamed(
+                          '/institute/detail',
+                          arguments: {
+                            'instituteId': model.id,
+                          },
                         ),
-                        color: LightColors.tertiary,
-                        image: DecorationImage(
-                          image: NetworkImage(model.image),
-                          fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: Scale.xs),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: LightColors.tertiary,
+                            width: 2,
+                          ),
+                          color: LightColors.tertiary,
+                          image: DecorationImage(
+                            image: NetworkImage(model.image),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

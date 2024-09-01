@@ -1,5 +1,6 @@
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
+import 'package:entregas/app/core/controllers/upload/upload_controller.dart';
 import 'package:entregas/app/core/controllers/user/user_controller.dart';
 import 'package:entregas/app/core/repositories/user_repository.dart';
 import 'package:entregas/app/core/repositories/user_repository_impl.dart';
@@ -15,6 +16,7 @@ import 'package:entregas/app/core/viewmodels/auth/auth_view_model.dart';
 import 'package:entregas/app/core/viewmodels/user/user_view_model.dart';
 import 'package:entregas/app/modules/auth/auth_module.dart';
 import 'package:entregas/app/modules/home/home_module.dart';
+import 'package:entregas/app/modules/institute/institute_module.dart';
 import 'package:entregas/app/modules/search/search_module.dart';
 
 import 'package:entregas/uikit/visual_identity/themes/themes.dart';
@@ -78,13 +80,17 @@ class AppWidget extends StatelessWidget {
             (i) => UserController(
               viewModel: i(),
             ),
-          )
+          ),
+          Bind.lazySingleton(
+            (i) => UploadController(),
+          ),
         ];
       },
       modules: [
         HomeModule(),
         AuthModule(),
         SearchModule(),
+        InstituteModule(),
       ],
       builder: (context, routes, flutterGetItNavObserver) {
         return MaterialApp(

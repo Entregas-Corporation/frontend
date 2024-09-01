@@ -93,7 +93,15 @@ class _InstituteByUserSearchPageState
                     shrinkWrap: true,
                     itemBuilder: (_, index) {
                       final model = institutePageDto[index];
-                      return ItemInstituteHorizontal(model: model);
+                      return ItemInstituteHorizontal(
+                        model: model,
+                        onTap: () => Navigator.of(context).pushReplacementNamed(
+                          '/institute/my-location',
+                          arguments: {
+                            'instituteId': model.id,
+                          },
+                        ),
+                      );
                     },
                   ),
               ],
@@ -102,7 +110,12 @@ class _InstituteByUserSearchPageState
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          await routeController.routeUpdate('/institute/register');
+          await routeController.routeGet();
+          Navigator.of(context)
+              .pushReplacementNamed(routeController.route.toString());
+        },
         child: const Icon(Icons.add_rounded),
       ),
     );

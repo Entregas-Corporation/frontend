@@ -4,6 +4,7 @@ final class TextConstant {
       'Você precisa validar a sua conta de e-mail!';
   static const String accountVerification =
       'Agora, verifique seu e-mail para confirmar a conta!';
+  static String fieldError = "Campos com valores vazios ou já existentes!";
   static const String login = 'Fazer Login';
   static const String loginAppeal = 'Que tal fazer um pedido?';
   static const String search = 'Pesquisar';
@@ -30,4 +31,27 @@ final class TextConstant {
   static String productNotFound = 'Produto não encontrado!';
   static String instituteNotFound = 'Loja não encontrada!';
   static String locationNotFound = 'Local não encontrado!';
+  static String editInstitute = 'Editar Local';
+  static String storeWhatsapp(String store) =>
+      'Olá, $store!%0AEu gostaria de tirar algumas dúvidas. Você poderia me ajudar?';
+  static String deliveryman = 'Entregadores';
+  static String newInstitute = 'Novo Local';
+  static String name = 'Nome';
+  static String description = 'Descrição';
+  static String quantity = 'Quantidade';
+  static String price = 'Preço';
+  static String whatsapp = 'Whatsapp';
+  static String save = 'Salvar';
+  static String costPerShipping = 'Custo por Frete';
+  static String uploadImage = 'Escolher Imagem';
+  static String location = 'Locais';
+  static String institute = 'Estabelecimento';
+  static String residenceNumber = 'Número da Residência';
+  static String complement = 'Complemento';
+  static String requiredField = 'Campo obrigatório!';
+  static String maxCaracters = 'Ultrapassou o limite de caracters!';
+  static String minCaractersWhatsapp = 'O mínimo de caracters é 11!';
+  static String coin = 'R\$ ';
+  static String perKm = 'por km';
+  static String successSaveInstitute = "Local salvo com sucesso!";
 }

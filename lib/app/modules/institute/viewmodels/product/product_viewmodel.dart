@@ -8,7 +8,7 @@ import 'package:flutter_getit/flutter_getit.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:entregas/app/core/services/messages/message_service.dart';
-import 'package:entregas/app/modules/search/repositories/product/product_repository.dart';
+import 'package:entregas/app/modules/institute/repositories/product/product_repository.dart';
 
 part 'product_viewmodel.g.dart';
 
@@ -29,17 +29,17 @@ abstract class ProductViewmodelBase with Store {
   bool isLoading = false;
 
   @observable
-  ProductPageDto? productPageList;
+  ProductPageDto? productList;
 
   @observable
   List<ProductDetailDto>? filterProductPageList;
 
   @action
-  Future<void> listProductPage() async {
+  Future<void> listProductByInstitute(String productCategoryId) async {
     try {
       isLoading = true;
-      productPageList = await repository.findAllPage();
-      filterProductPageList = productPageList?.productDto;
+      productList = await repository.findAllPageByInstitute(productCategoryId);
+      filterProductPageList = productList?.productDto;
     } on RestException catch (e) {
       await authController.logout();
       await routeController.routeClean();
@@ -53,30 +53,13 @@ abstract class ProductViewmodelBase with Store {
   @action
   filterListProducPage(String value) {
     if (value.isNotEmpty) {
-      filterProductPageList = productPageList?.productDto
+      filterProductPageList = productList?.productDto
           .where((element) =>
               element.name.toLowerCase().contains(value.toLowerCase()) ||
               element.description.toLowerCase().contains(value.toLowerCase()))
           .toList();
     } else {
-      filterProductPageList = productPageList?.productDto;
-    }
-  }
-
-  @action
-  Future<void> listProductByProdcutCategory(String productCategoryId) async {
-    try {
-      isLoading = true;
-      productPageList =
-          await repository.findAllPageByProductCategory(productCategoryId);
-      filterProductPageList = productPageList?.productDto;
-    } on RestException catch (e) {
-      await authController.logout();
-      await routeController.routeClean();
-      await authController.accessTokenLoad();
-      messageService.showMessageError(e.message);
-    } finally {
-      isLoading = false;
+      filterProductPageList = productList?.productDto;
     }
   }
 }

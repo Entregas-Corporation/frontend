@@ -19,7 +19,7 @@ class ClientServiceImpl implements ClientService {
             final accessToken =
                 await localStoreService.get(LocalStorageConstant.authKey);
             if (accessToken != null) {
-               options.headers['Authorization'] = 'Bearer $accessToken';
+              options.headers['Authorization'] = 'Bearer $accessToken';
             }
           }
           return handler.next(options);
@@ -29,22 +29,31 @@ class ClientServiceImpl implements ClientService {
   }
 
   @override
-  Future get(String url, {bool requiresAuth = true, String contentType = Headers.jsonContentType}) async {
+  Future get(String url,
+      {bool requiresAuth = true,
+      String contentType = Headers.jsonContentType}) async {
     return await dio.get(url,
-        options: Options(extra: {'requiredAuth': requiresAuth}, contentType: contentType));
+        options: Options(
+            extra: {'requiredAuth': requiresAuth}, contentType: contentType));
   }
 
   @override
   Future post(String url, Object data,
-      {String contentType = Headers.jsonContentType}) async {
+      {bool requiresAuth = true,
+      String contentType = Headers.jsonContentType}) async {
     return await dio.post(url,
-        data: data, options: Options(contentType: contentType));
+        data: data,
+        options: Options(
+            extra: {'requiredAuth': requiresAuth}, contentType: contentType));
   }
 
   @override
   Future put(String url, Object data,
-      {String contentType = Headers.jsonContentType}) async {
+      {bool requiresAuth = true,
+      String contentType = Headers.jsonContentType}) async {
     return await dio.put(url,
-        data: data, options: Options(contentType: contentType));
+        data: data,
+        options: Options(
+            extra: {'requiredAuth': requiresAuth}, contentType: contentType));
   }
 }

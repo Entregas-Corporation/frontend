@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
+import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:entregas/app/core/dtos/institute/institute_page_dto.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:entregas/app/core/services/messages/message_service.dart';
@@ -19,6 +22,10 @@ abstract class InstituteViewmodelBase with Store {
     required this.messageService,
   });
 
+  final authController = Injector.get<AuthController>();
+  final routeController = Injector.get<RouteController>();
+
+
   @observable
   bool isLoading = false;
 
@@ -31,8 +38,10 @@ abstract class InstituteViewmodelBase with Store {
       isLoading = true;
       instituteList = await repository.findAllPage();
     } on RestException catch (e) {
-      messageService.showMessageError(e.message);
-    } finally {
+await authController.logout();
+      await routeController.routeClean();
+      await authController.accessTokenLoad();
+      messageService.showMessageError(e.message);    } finally {
       isLoading = false;
     }
   }
