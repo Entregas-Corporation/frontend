@@ -12,4 +12,9 @@ abstract class UploadControllerBase with Store {
   void setImage(XFile? file) {
     imageFile = file;
   }
+
+  @action
+  void removeImage() {
+    imageFile = null;
+  }
 }

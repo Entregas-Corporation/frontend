@@ -40,6 +40,17 @@ mixin _$UploadController on UploadControllerBase, Store {
   }
 
   @override
+  void removeImage() {
+    final _$actionInfo = _$UploadControllerBaseActionController.startAction(
+        name: 'UploadControllerBase.removeImage');
+    try {
+      return super.removeImage();
+    } finally {
+      _$UploadControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 imageFile: ${imageFile}

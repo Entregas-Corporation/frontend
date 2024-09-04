@@ -43,4 +43,3 @@ app.*.map.json
 /android/app/release
 
 # Google Credenciais
-/lib/app/core/constants/google_constant.dart

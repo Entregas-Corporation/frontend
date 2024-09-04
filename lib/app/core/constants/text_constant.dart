@@ -54,4 +54,6 @@ final class TextConstant {
   static String coin = 'R\$ ';
   static String perKm = 'por km';
   static String successSaveInstitute = "Local salvo com sucesso!";
+  static String successSaveProduct = "Produto salvo com sucesso!";
+  static String selectProductCategory = "Selecione uma categoria";
 }

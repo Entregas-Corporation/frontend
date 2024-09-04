@@ -180,6 +180,7 @@ class _CreateInstitutePageState extends State<CreateInstitutePage>
                                     } finally {
                                       if (instituteController.isLoading ==
                                           false) {
+                                        uploadController.removeImage();
                                         Navigator.of(context)
                                             .pushReplacementNamed('/home');
                                       }

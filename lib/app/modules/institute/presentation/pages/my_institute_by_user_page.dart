@@ -198,7 +198,15 @@ class _MyInstituteByUserPageState extends State<MyInstituteByUserPage>
       ),
       floatingActionButton: _tabController.index == 0
           ? FloatingActionButton(
-              onPressed: () {},
+              onPressed: () async {
+                await routeController.routeUpdate('/product/register');
+                await routeController.routeGet();
+                Navigator.of(context).pushReplacementNamed(
+                    routeController.route.toString(),
+                    arguments: {
+                      'instituteId': instituteController.institute!.id
+                    });
+              },
               child: const Icon(Icons.add_rounded),
             )
           : null,
