@@ -2,6 +2,7 @@ import 'package:entregas/app/modules/home/home_route.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/institute/institute_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product/product_controller.dart';
 import 'package:entregas/app/modules/home/presentation/controllers/product_category/product_category_controller.dart';
+import 'package:entregas/app/modules/home/presentation/pages/product_detail.dart';
 import 'package:entregas/app/modules/home/repositories/institute/institute_repository.dart';
 import 'package:entregas/app/modules/home/repositories/institute/institute_repository_impl.dart';
 import 'package:entregas/app/modules/home/repositories/product/product_repository.dart';
@@ -67,5 +68,8 @@ class HomeModule extends FlutterGetItModule {
   String get moduleRouteName => '/home';
 
   @override
-  Map<String, WidgetBuilder> get pages => {'/': (context) => const HomeRoute()};
+  Map<String, WidgetBuilder> get pages => {
+        '/': (context) => const HomeRoute(),
+        '/product/detail': (context) => const ProductDetail(),
+      };
 }

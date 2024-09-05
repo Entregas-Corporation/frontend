@@ -1,21 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:entregas/app/core/constants/text_constant.dart';
-import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
 
+import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/dtos/product/product_detail_dto.dart';
+import 'package:entregas/uikit/uikit.dart';
 
 class ItemProductHorizontal extends StatelessWidget {
   final ProductDetailDto model;
-
+  final void Function()? onTap;
   const ItemProductHorizontal({
     super.key,
     required this.model,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return CardDefault(
+      onTap: onTap,
       borderRadius: Scale.sm,
       child: Container(
         padding: const EdgeInsets.all(Scale.sm),
@@ -38,7 +40,7 @@ class ItemProductHorizontal extends StatelessWidget {
                   children: [
                     BodyText(text: model.name),
                     const SizedBox(
-                       height: Scale.xxs,
+                      height: Scale.xxs,
                     ),
                     LabelText(
                       text: model.description,
@@ -46,17 +48,19 @@ class ItemProductHorizontal extends StatelessWidget {
                       overflow: true,
                     ),
                     const SizedBox(
-                       height: Scale.xxs,
+                      height: Scale.xxs,
                     ),
                     FooterText(text: model.institute),
                     const SizedBox(
-                       height: Scale.xxs,
+                      height: Scale.xxs,
                     ),
                     FooterText(
-                        text:
-                            "${model.quantity} ${TextConstant.available}",maxLines: 1, overflow: true,),
+                      text: "${model.quantity} ${TextConstant.available}",
+                      maxLines: 1,
+                      overflow: true,
+                    ),
                     const SizedBox(
-                       height: Scale.xxs,
+                      height: Scale.xxs,
                     ),
                     Align(
                       alignment: Alignment.centerRight,

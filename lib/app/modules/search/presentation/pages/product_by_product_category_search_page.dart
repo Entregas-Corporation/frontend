@@ -23,8 +23,10 @@ class ProductByProductCategorySearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-    productController.initProductByProductCategory(arguments['productCategoryId']);
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    productController
+        .initProductByProductCategory(arguments['productCategoryId']);
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
@@ -85,7 +87,17 @@ class ProductByProductCategorySearchPage extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (_, index) {
                     final model = productPageDto[index];
-                    return ItemProductHorizontal(model: model);
+                    return ItemProductHorizontal(
+                      model: model,
+                      onTap: () {
+                        Navigator.of(context).pushReplacementNamed(
+                          '/home/product/detail',
+                          arguments: {
+                            'productId': model.id,
+                          },
+                        );
+                      },
+                    );
                   },
                 ),
             ],

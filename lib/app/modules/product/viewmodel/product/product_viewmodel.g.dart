@@ -25,6 +25,22 @@ mixin _$ProductViewmodel on ProductViewmodelBase, Store {
     });
   }
 
+  late final _$productListAtom =
+      Atom(name: 'ProductViewmodelBase.productList', context: context);
+
+  @override
+  ProductPageDto? get productList {
+    _$productListAtom.reportRead();
+    return super.productList;
+  }
+
+  @override
+  set productList(ProductPageDto? value) {
+    _$productListAtom.reportWrite(value, super.productList, () {
+      super.productList = value;
+    });
+  }
+
   late final _$registerAsyncAction =
       AsyncAction('ProductViewmodelBase.register', context: context);
 
@@ -36,7 +52,8 @@ mixin _$ProductViewmodel on ProductViewmodelBase, Store {
   @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+productList: ${productList}
     ''';
   }
 }

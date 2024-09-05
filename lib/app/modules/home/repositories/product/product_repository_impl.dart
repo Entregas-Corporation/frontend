@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:entregas/app/core/constants/api_constant.dart';
 import 'package:entregas/app/core/constants/text_constant.dart';
+import 'package:entregas/app/core/dtos/product/product_detail_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:entregas/app/core/services/client/client_service.dart';
 import 'package:entregas/app/core/dtos/product/product_page_dto.dart';
@@ -24,6 +25,19 @@ class ProductRepositoryImpl implements ProductRepository {
         contentType: 'application/json',
       );
       return ProductPageDto.fromMap(response.data);
+    } on DioException catch (e) {
+      throw RestException(TextConstant.serverError, e.hashCode, e.response);
+    }
+  }
+
+    @override
+  Future<ProductDetailDto> detail(String id) async{
+       try {
+      final Response response = await service.get(
+          "${ApiConstant.detailProduct}/$id",
+          requiresAuth: true,
+          contentType: 'application/json');
+      return  ProductDetailDto.fromMap(response.data);
     } on DioException catch (e) {
       throw RestException(TextConstant.serverError, e.hashCode, e.response);
     }

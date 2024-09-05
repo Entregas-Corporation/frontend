@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
+import 'package:entregas/app/core/dtos/product/product_detail_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:mobx/mobx.dart';
@@ -31,6 +32,9 @@ abstract class ProductViewmodelBase with Store {
   @observable
   ProductPageDto? productList;
 
+  @observable
+  ProductDetailDto? product;
+
   @action
   Future<void> listProductByProdcutCategory(String productCategoryId) async {
     try {
@@ -41,6 +45,18 @@ abstract class ProductViewmodelBase with Store {
       await authController.logout();
       await routeController.routeClean();
       await authController.accessTokenLoad();
+      messageService.showMessageError(e.message);
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  @action
+  Future<void> detail(String id) async {
+    try {
+      isLoading = true;
+      product = await repository.detail(id);
+    } on RestException catch (e) {
       messageService.showMessageError(e.message);
     } finally {
       isLoading = false;

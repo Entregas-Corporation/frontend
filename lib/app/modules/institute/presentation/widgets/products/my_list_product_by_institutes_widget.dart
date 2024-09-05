@@ -80,6 +80,14 @@ class _MyListProductByInstitutesWidgetState
                 final model = productPageDto[index];
                 return ItemProductHorizontal(
                   model: model,
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed(
+                      '/home/product/detail',
+                      arguments: {
+                        'productId': model.id,
+                      },
+                    );
+                  },
                 );
               },
             ),

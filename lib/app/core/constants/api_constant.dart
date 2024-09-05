@@ -14,6 +14,7 @@ final class ApiConstant {
   static const String listProductByInstitute =
       "$baseURI/product/list/institute/valid";
   static const String registerProduct = "$baseURI/product/register";
+  static const String detailProduct = "$baseURI/product/detail";
 
   static const String listInstituteValid = "$baseURI/institute/list/valid";
   static const String listInstituteValidByUser =

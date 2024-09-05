@@ -8,12 +8,15 @@ class ItemProductVertical extends StatelessWidget {
   const ItemProductVertical({
     super.key,
     required this.model,
+    this.onTap,
   });
   final ProductDetailDto model;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return CardDefault(
+      onTap: onTap,
       borderRadius: Scale.xs,
       child: Column(
         children: [

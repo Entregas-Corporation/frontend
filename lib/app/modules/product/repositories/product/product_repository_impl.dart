@@ -26,9 +26,7 @@ class ProductRepositoryImpl implements ProductRepository {
         ..add(MapEntry('price', model.price.toString()))
         ..add(MapEntry('quantity', model.quantity.toString()))
         ..add(MapEntry('institute', model.institute))
-        ..add(MapEntry('category', model.category))
-        ..add(MapEntry('actived', model.actived.toString()))
-        ..add(MapEntry('valid', model.valid.toString()));
+        ..add(MapEntry('category', model.category));
 
       formData.files.add(MapEntry(
           'image',

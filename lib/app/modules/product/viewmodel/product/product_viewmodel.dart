@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:entregas/app/core/constants/text_constant.dart';
+import 'package:entregas/app/core/dtos/product/product_page_dto.dart';
 import 'package:entregas/app/core/dtos/product/product_save_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:flutter_getit/flutter_getit.dart';
@@ -28,6 +29,11 @@ abstract class ProductViewmodelBase with Store {
 
   @observable
   bool isLoading = false;
+
+
+  @observable
+  ProductPageDto? productList;
+
 
   @action
   Future<void> register(ProductSaveDto model, XFile file) async {

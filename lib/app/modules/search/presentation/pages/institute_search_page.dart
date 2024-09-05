@@ -88,7 +88,15 @@ class _ProductSearchPageState extends State<InstituteSearchPage> {
                   shrinkWrap: true,
                   itemBuilder: (_, index) {
                     final model = institutePageDto[index];
-                    return ItemInstituteHorizontal(model: model, onTap: () {},);
+                    return ItemInstituteHorizontal(
+                      model: model,
+                      onTap: () => Navigator.of(context).pushReplacementNamed(
+                        '/institute/detail',
+                        arguments: {
+                          'instituteId': model.id,
+                        },
+                      ),
+                    );
                   },
                 ),
             ],

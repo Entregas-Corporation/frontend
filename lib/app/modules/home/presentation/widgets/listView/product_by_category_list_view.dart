@@ -36,7 +36,8 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
-      final categories = productCategoryController.productListPage?.productCategoryDto ?? [];
+      final categories =
+          productCategoryController.productListPage?.productCategoryDto ?? [];
 
       return ListView.separated(
         itemCount: categories.length,
@@ -52,7 +53,8 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
           _loadProducts(categoryModel.id);
 
           return FutureBuilder(
-            future: productController.initProductByProductCategory(categoryModel.id),
+            future: productController
+                .initProductByProductCategory(categoryModel.id),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CardDefault(
@@ -121,17 +123,21 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
                                 },
                               );
                             },
-                            child: const Icon(Icons.keyboard_arrow_right_rounded),
+                            child:
+                                const Icon(Icons.keyboard_arrow_right_rounded),
                           ),
                         ],
                       ),
                       const DividerDefault(),
-                      productPageDto == null || productPageDto.productDto.isEmpty
-                          ? const Center(child: Text('Productos não disponíveis'))
+                      productPageDto == null ||
+                              productPageDto.productDto.isEmpty
+                          ? const Center(
+                              child: Text('Productos não disponíveis'))
                           : SizedBox(
                               height: 153,
                               child: GridView.builder(
-                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   crossAxisSpacing: Scale.xs,
                                   mainAxisSpacing: Scale.xs,
@@ -143,8 +149,20 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
-                                  final ProductDetailDto model = productPageDto.productDto[index];
-                                  return ItemProductVertical(model: model);
+                                  final ProductDetailDto model =
+                                      productPageDto.productDto[index];
+                                  return ItemProductVertical(
+                                    model: model,
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .pushReplacementNamed(
+                                        '/home/product/detail',
+                                        arguments: {
+                                          'productId': model.id,
+                                        },
+                                      );
+                                    },
+                                  );
                                 },
                               ),
                             ),

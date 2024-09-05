@@ -88,7 +88,17 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                   shrinkWrap: true,
                   itemBuilder: (_, index) {
                     final model = productPageDto[index];
-                    return ItemProductHorizontal(model: model);
+                    return ItemProductHorizontal(
+                      model: model,
+                      onTap: () {
+                        Navigator.of(context).pushReplacementNamed(
+                          '/home/product/detail',
+                          arguments: {
+                            'productId': model.id,
+                          },
+                        );
+                      },
+                    );
                   },
                 ),
             ],

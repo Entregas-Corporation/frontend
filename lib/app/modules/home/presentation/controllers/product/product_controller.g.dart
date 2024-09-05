@@ -16,6 +16,28 @@ mixin _$ProductController on ProductControllerBase, Store {
           Computed<ProductPageDto?>(() => super.productPageDto,
               name: 'ProductControllerBase.productPageDto'))
       .value;
+  Computed<ProductDetailDto?>? _$productComputed;
+
+  @override
+  ProductDetailDto? get product =>
+      (_$productComputed ??= Computed<ProductDetailDto?>(() => super.product,
+              name: 'ProductControllerBase.product'))
+          .value;
+  Computed<bool>? _$isLoadingComputed;
+
+  @override
+  bool get isLoading =>
+      (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
+              name: 'ProductControllerBase.isLoading'))
+          .value;
+
+  late final _$detailAsyncAction =
+      AsyncAction('ProductControllerBase.detail', context: context);
+
+  @override
+  Future detail(String id) {
+    return _$detailAsyncAction.run(() => super.detail(id));
+  }
 
   late final _$initProductByProductCategoryAsyncAction = AsyncAction(
       'ProductControllerBase.initProductByProductCategory',
@@ -30,7 +52,9 @@ mixin _$ProductController on ProductControllerBase, Store {
   @override
   String toString() {
     return '''
-productPageDto: ${productPageDto}
+productPageDto: ${productPageDto},
+product: ${product},
+isLoading: ${isLoading}
     ''';
   }
 }

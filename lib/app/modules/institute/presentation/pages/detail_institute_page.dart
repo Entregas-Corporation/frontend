@@ -23,7 +23,7 @@ class _DetailInstitutePageState extends State<DetailInstitutePage> {
   final routeController = Injector.get<RouteController>();
   final instituteController = Injector.get<InstituteController>();
 
-    @override
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
@@ -132,7 +132,7 @@ class _DetailInstitutePageState extends State<DetailInstitutePage> {
                     height: Scale.xxs,
                   ),
                   SingleChildScrollView(
-                      child: MyListProductByInstitutesWidget(id: model.id)),
+                      child: MyListProductByInstitutesWidget(id: model.id, )),
                 ],
               ),
             ),
