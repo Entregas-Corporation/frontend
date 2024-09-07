@@ -47,10 +47,8 @@ class _CreateProductPageState extends State<CreateProductPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
-    if (arguments != null && arguments.containsKey('instituteId')) {
+    if (arguments != null) {
       instituteIdArgs = arguments['instituteId'];
-    } else {
-      instituteIdArgs = '';
     }
   }
 
@@ -60,7 +58,7 @@ class _CreateProductPageState extends State<CreateProductPage> {
       appBar: AppBar(
         titleSpacing: 0,
         toolbarHeight: kToolbarHeight,
-        title: HeadlineText(text: TextConstant.newInstitute),
+        title: HeadlineText(text: TextConstant.newProduct),
         leading: IconButtonDefault(
           icon: const Icon(Icons.arrow_back),
           tooltipText: TextConstant.back,

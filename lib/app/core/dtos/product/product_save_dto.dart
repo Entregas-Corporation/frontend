@@ -9,6 +9,8 @@ class ProductSaveDto {
   final int quantity;
   final String institute;
   final String category;
+  final bool? actived;
+  final bool? valid;
   ProductSaveDto({
     this.id,
     required this.name,
@@ -17,6 +19,8 @@ class ProductSaveDto {
     required this.quantity,
     required this.institute,
     required this.category,
+    this.actived,
+    this.valid,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +32,8 @@ class ProductSaveDto {
       'quantity': quantity,
       'institute': institute,
       'category': category,
+      'actived': actived,
+      'valid': valid,
     };
   }
 
@@ -40,6 +46,8 @@ class ProductSaveDto {
       quantity: map['quantity'] as int,
       institute: map['institute'] as String,
       category: map['category'] as String,
+      actived: map['actived'] != null ? map['actived'] as bool : null,
+      valid: map['valid'] != null ? map['valid'] as bool : null,
     );
   }
 
@@ -49,7 +57,7 @@ class ProductSaveDto {
 
   @override
   String toString() {
-    return 'ProductSaveDto(id: $id, name: $name, description: $description, price: $price, quantity: $quantity, institute: $institute, category: $category)';
+    return 'ProductSaveDto(id: $id, name: $name, description: $description, price: $price, quantity: $quantity, institute: $institute, category: $category, actived: $actived, valid: $valid)';
   }
 
   @override
@@ -63,7 +71,9 @@ class ProductSaveDto {
       other.price == price &&
       other.quantity == quantity &&
       other.institute == institute &&
-      other.category == category;
+      other.category == category &&
+      other.actived == actived &&
+      other.valid == valid;
   }
 
   @override
@@ -74,6 +84,8 @@ class ProductSaveDto {
       price.hashCode ^
       quantity.hashCode ^
       institute.hashCode ^
-      category.hashCode;
+      category.hashCode ^
+      actived.hashCode ^
+      valid.hashCode;
   }
 }

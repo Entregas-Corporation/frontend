@@ -36,6 +36,7 @@ final class TextConstant {
       'Olá, $store!%0AEu gostaria de tirar algumas dúvidas. Você poderia me ajudar?';
   static String deliveryman = 'Entregadores';
   static String newInstitute = 'Novo Local';
+  static String newProduct = 'Novo Produto';
   static String name = 'Nome';
   static String description = 'Descrição';
   static String quantity = 'Quantidade';

@@ -35,7 +35,7 @@ class ProductRepositoryImpl implements ProductRepository {
             filename: file.name,
           )));
 
-      return await clientService.post(ApiConstant.registerInstitute, formData,
+      return await clientService.post(ApiConstant.registerProduct, formData,
           requiresAuth: true, contentType: 'multipart/form-data');
     } on DioException catch (e) {
       if (e.response?.statusCode == 400) {
