@@ -36,7 +36,6 @@ class ProductCategoryDropdown extends StatelessWidget {
             selectedValue: productCategoryController.productCatgoryItem,
             onChanged: (value) {
               productCategoryController.productCatgoryItem = value;
-              print(productCategoryController.productCatgoryItem);
             });
       },
     );

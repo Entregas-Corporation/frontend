@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:entregas/app/core/constants/api_constant.dart';
 import 'package:entregas/app/core/constants/text_constant.dart';
+import 'package:entregas/app/core/dtos/productCategory/product_category_save_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
 import 'package:entregas/app/core/services/client/client_service.dart';
 import 'package:entregas/app/core/dtos/productCategory/product_category_page_dto.dart';
@@ -25,5 +26,12 @@ class ProducCategoryRepositoryImpl implements ProducCategoryRepository {
     } on DioException catch (e) {
       throw RestException(TextConstant.serverError, e.hashCode, e.response);
     }
+  }
+
+  @override
+  Future<ProductCategorySaveDto> save(ProductCategorySaveDto model) async {
+    final Response response = await clientService.post(
+        ApiConstant.registerProductCategory, model.toJson());
+    return ProductCategorySaveDto.fromJson(response.data);
   }
 }

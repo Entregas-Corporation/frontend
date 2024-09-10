@@ -212,11 +212,6 @@ class CreateFormInstituteWidget extends StatelessWidget {
           controller: complementEC,
           text: TextConstant.complement,
           maxLines: 2,
-          validator: Validatorless.multiple([
-            Validatorless.required(
-              TextConstant.requiredField,
-            ),
-          ]),
         ),
         const SizedBox(
           height: Scale.xs,
@@ -249,6 +244,11 @@ class CreateFormInstituteWidget extends StatelessWidget {
           text: TextConstant.costPerShipping,
           prefix: LabelText(text: TextConstant.coin),
           suffix: LabelText(text: TextConstant.perKm),
+          validator: Validatorless.multiple([
+            Validatorless.required(
+              TextConstant.requiredField,
+            ),
+          ]),
         ),
       ],
     );

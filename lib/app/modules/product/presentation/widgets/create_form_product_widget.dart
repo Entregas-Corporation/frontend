@@ -228,11 +228,9 @@ class _CreateFormProductWidgetState extends State<CreateFormProductWidget> {
           controller: widget.decriptionEC,
           text: TextConstant.description,
           maxLines: 3,
-          validator: Validatorless.multiple([
-            Validatorless.required(
-              TextConstant.requiredField,
-            ),
-          ]),
+          validator: Validatorless.required(
+            TextConstant.requiredField,
+          ),
         ),
         const SizedBox(
           height: Scale.xs,

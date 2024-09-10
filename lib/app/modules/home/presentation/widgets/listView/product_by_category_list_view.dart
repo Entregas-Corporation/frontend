@@ -29,28 +29,18 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
     productCategoryController.init();
   }
 
-  Future<void> _loadProducts(String categoryId) async {
-    await productController.initProductByProductCategory(categoryId);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
       final categories =
           productCategoryController.productListPage?.productCategoryDto ?? [];
 
-      return ListView.separated(
+      return ListView.builder(
         itemCount: categories.length,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        separatorBuilder: (_, index) => const Padding(
-          padding: EdgeInsets.all(Scale.xs),
-          child: DividerDefault(),
-        ),
         itemBuilder: (context, index) {
           final categoryModel = categories[index];
-
-          _loadProducts(categoryModel.id);
 
           return FutureBuilder(
             future: productController
@@ -102,73 +92,77 @@ class _ProductByCategoryListViewState extends State<ProductByCategoryListView> {
 
               final productPageDto = productController.productPageDto;
 
-              return CardDefault(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // Verifica se a categoria tem produtos
+              if (productPageDto == null || productPageDto.productDto.isEmpty) {
+                return const SizedBox.shrink(); // Não exibe nada se não houver produtos
+              }
+
+              return Column(
+                children: [
+                  CardDefault(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: TitleText(text: categoryModel.name),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushReplacementNamed(
-                                '/search/product/by/product-category',
-                                arguments: {
-                                  'productCategoryId': categoryModel.id,
-                                  'productCategoryName': categoryModel.name
-                                },
-                              );
-                            },
-                            child:
-                                const Icon(Icons.keyboard_arrow_right_rounded),
-                          ),
-                        ],
-                      ),
-                      const DividerDefault(),
-                      productPageDto == null ||
-                              productPageDto.productDto.isEmpty
-                          ? const Center(
-                              child: Text('Productos não disponíveis'))
-                          : SizedBox(
-                              height: 153,
-                              child: GridView.builder(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: Scale.xs,
-                                  mainAxisSpacing: Scale.xs,
-                                  mainAxisExtent: 153,
-                                ),
-                                itemCount: productPageDto.productDto.length > 4
-                                    ? 4
-                                    : productPageDto.productDto.length,
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  final ProductDetailDto model =
-                                      productPageDto.productDto[index];
-                                  return ItemProductVertical(
-                                    model: model,
-                                    onTap: () {
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
-                                        '/home/product/detail',
-                                        arguments: {
-                                          'productId': model.id,
-                                        },
-                                      );
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: TitleText(text: categoryModel.name),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushReplacementNamed(
+                                    '/search/product/by/product-category',
+                                    arguments: {
+                                      'productCategoryId': categoryModel.id,
+                                      'productCategoryName': categoryModel.name
                                     },
                                   );
                                 },
+                                child: const Icon(
+                                    Icons.keyboard_arrow_right_rounded),
                               ),
+                            ],
+                          ),
+                          const DividerDefault(),
+                          GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: Scale.xs,
+                              mainAxisSpacing: Scale.xs,
+                              mainAxisExtent: 153,
                             ),
-                    ],
+                            itemCount: productPageDto.productDto.length > 4? 4: productPageDto.productDto.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              final ProductDetailDto model =
+                                  productPageDto.productDto[index];
+                              return ItemProductVertical(
+                                model: model,
+                                onTap: () {
+                                  Navigator.of(context).pushReplacementNamed(
+                                    '/home/product/detail',
+                                    arguments: {
+                                      'productId': model.id,
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                  if (index < categories.length - 1)
+                    const Padding(
+                      padding: EdgeInsets.all(Scale.xs),
+                      child: DividerDefault(),
+                    ),
+                ],
               );
             },
           );

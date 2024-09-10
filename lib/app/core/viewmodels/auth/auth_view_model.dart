@@ -8,7 +8,7 @@ import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/dtos/user/login_user_dto.dart';
 import 'package:entregas/app/core/dtos/user/register_user_dto.dart';
 import 'package:entregas/app/core/exceptions/rest_exception.dart';
-import 'package:entregas/app/core/repositories/user_repository.dart';
+import 'package:entregas/app/core/repositories/user/user_repository.dart';
 import 'package:entregas/app/core/services/auth/social/social_auth_service.dart';
 import 'package:entregas/app/core/services/local/local_store_service.dart';
 import 'package:entregas/app/core/services/messages/message_service.dart';

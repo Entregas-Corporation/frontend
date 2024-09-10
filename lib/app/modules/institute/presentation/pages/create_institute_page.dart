@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 
 class CreateInstitutePage extends StatefulWidget {
   const CreateInstitutePage({super.key});

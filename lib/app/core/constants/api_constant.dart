@@ -7,6 +7,7 @@ final class ApiConstant {
 
   static const String listProductCategory =
       "$baseURI/product-category/list/valid";
+  static const String registerProductCategory = "$baseURI/product-category/register";
 
   static const String listProductValid = "$baseURI/product/list/valid";
   static const String listProductByProductCategory =

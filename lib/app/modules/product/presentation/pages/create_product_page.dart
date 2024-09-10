@@ -105,7 +105,6 @@ class _CreateProductPageState extends State<CreateProductPage> {
                   onPressed: () async {
                     if ((globalKeyFormEC.currentState?.validate() ?? false) &&
                         uploadController.imageFile != null) {
-          
                       ProductSaveDto model = ProductSaveDto(
                         name: nameEC.text,
                         description: descriptionEC.text,
@@ -114,16 +113,14 @@ class _CreateProductPageState extends State<CreateProductPage> {
                         institute: instituteIdArgs,
                         category: productCategoryController.productCatgoryItem
                             .toString(),
-                        
                       );
                       try {
                         await productController.register(
                             model, uploadController.imageFile!);
                       } finally {
                         if (productController.isLoading == false) {
-                          await routeController.routeUpdate('/home');
-                          Navigator.of(context).pushReplacementNamed(
-                              routeController.route.toString());
+                          uploadController.removeImage();
+                          Navigator.of(context).pushReplacementNamed('/home');
                         }
                       }
                     }

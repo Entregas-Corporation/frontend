@@ -1,22 +1,9 @@
-# entregas
+# Entregas - Frontend
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-
+    O Entregas é uma ferramenta web e móvel de delivery, que não só oferece um fluxo de entrega mais preciso, mas também proporciona um ambiente simplificado para o gerenciamento de produtos variáveis em lojas virtuais, reduzindo os custos de manutenção no mercado digital. 
+    
+    O repositório criado possui finalidade de desenvolvimento o frontend do sistema, usando o freamwork flutter. 
+    
 ## Inicialização
 
 Primeiramente, instale todas as configurações do flutter em sua máquina, caso já não esteja instalada. Siga a documentação: https://docs.flutter.dev/get-started/install
@@ -24,4 +11,5 @@ Primeiramente, instale todas as configurações do flutter em sua máquina, caso
 Após a configuração, volte ao projeto e execute os seguintes comandos no terminal:
 
 - flutter pub get
+- dart run build_runner 
 - flutter run -d chrome --web-hostname localhost --web-port 7357
