@@ -57,4 +57,6 @@ final class TextConstant {
   static String successSaveInstitute = "Local salvo com sucesso!";
   static String successSaveProduct = "Produto salvo com sucesso!";
   static String selectProductCategory = "Selecione uma categoria";
+  static String users = "Usuários";
+
 }

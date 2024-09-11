@@ -1,13 +1,28 @@
+import 'package:entregas/app/core/controllers/user/user_controller.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/appBarAction/app_bar_action_widget.dart';
-import 'package:entregas/app/modules/home/presentation/widgets/card/initial_happy_card.dart';
 import 'package:entregas/app/modules/home/presentation/widgets/drawer/drawer_widget.dart';
-import 'package:entregas/app/modules/home/presentation/widgets/listView/product_by_category_list_view.dart';
-import 'package:entregas/app/modules/home/presentation/widgets/listView/store_list_view.dart';
+import 'package:entregas/app/modules/home/presentation/widgets/role/admin/home_admin.dart';
+import 'package:entregas/app/modules/home/presentation/widgets/role/user/home_user.dart';
 import 'package:flutter/material.dart';
 import 'package:entregas/uikit/uikit.dart';
+import 'package:flutter_getit/flutter_getit.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final userController = Injector.get<UserController>();
+
+  @override
+  void initState() {
+    super.initState();
+    userController.detail();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +37,19 @@ class HomePage extends StatelessWidget {
           AppBarActionWidget(),
         ],
       ),
-      body: const BodyDefault(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InitialHappyCard(),
-            SizedBox(
-              height: Scale.md,
-            ),
-            StoreListView(),
-            SizedBox(
-              height: Scale.md,
-            ),
-            ProductByCategoryListView()
-          ],
-        ),
+      body: BodyDefault(
+        body: Observer(builder: (_) {
+          if (userController.user == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            if (userController.user!.role == 'ADMIN') {
+              return const HomeAdmin();
+            }
+            return const HomeUser();
+          }
+        }),
       ),
       drawer: DrawerWidget(),
     );
