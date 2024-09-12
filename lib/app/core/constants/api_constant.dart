@@ -4,6 +4,12 @@ final class ApiConstant {
   static const String userLogin = "$baseURI/user/login";
   static const String userRegister = "$baseURI/user/register";
   static const String userDetail = "$baseURI/user/detail";
+  static const String listUserValid = "$baseURI/user/list/valid";
+  static const String listUserInvalid = "$baseURI/user/list/invalid";
+  static const String listUserSuspened = "$baseURI/user/list/admin/invalid";
+  static const String reactivateUserSuspened = "$baseURI/user/reactivate/account";
+  static const String suspendUserValid = "$baseURI/user/suspense/account";
+
 
   static const String listProductCategory =
       "$baseURI/product-category/list/valid";

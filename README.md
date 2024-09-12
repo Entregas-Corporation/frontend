@@ -11,5 +11,5 @@ Primeiramente, instale todas as configurações do flutter em sua máquina, caso
 Após a configuração, volte ao projeto e execute os seguintes comandos no terminal:
 
 - flutter pub get
-- dart run build_runner 
+- dart run build_runner build
 - flutter run -d chrome --web-hostname localhost --web-port 7357

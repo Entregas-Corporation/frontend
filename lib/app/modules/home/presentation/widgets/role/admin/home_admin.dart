@@ -9,12 +9,12 @@ class HomeAdmin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InitialHappyCard(),
-        SizedBox(
+        const InitialHappyCard(),
+        const SizedBox(
           height: Scale.md,
         ),
         GroupSelectMenuCard()

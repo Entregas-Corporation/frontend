@@ -19,6 +19,7 @@ import 'package:entregas/app/modules/home/home_module.dart';
 import 'package:entregas/app/modules/institute/institute_module.dart';
 import 'package:entregas/app/modules/product/product_module.dart';
 import 'package:entregas/app/modules/search/search_module.dart';
+import 'package:entregas/app/modules/user/user_module.dart';
 
 import 'package:entregas/uikit/visual_identity/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -93,6 +94,7 @@ class AppWidget extends StatelessWidget {
         SearchModule(),
         InstituteModule(),
         ProductModule(),
+        UserModule(),
       ],
       builder: (context, routes, flutterGetItNavObserver) {
         return MaterialApp(

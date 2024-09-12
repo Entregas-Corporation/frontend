@@ -31,6 +31,7 @@ final class TextConstant {
   static String productNotFound = 'Produto não encontrado!';
   static String instituteNotFound = 'Loja não encontrada!';
   static String locationNotFound = 'Local não encontrado!';
+  static String userNotFound = 'Usuário não encontrado!';
   static String editInstitute = 'Editar Local';
   static String storeWhatsapp(String store) =>
       'Olá, $store!%0AEu gostaria de tirar algumas dúvidas. Você poderia me ajudar?';
@@ -56,7 +57,13 @@ final class TextConstant {
   static String perKm = 'por km';
   static String successSaveInstitute = "Local salvo com sucesso!";
   static String successSaveProduct = "Produto salvo com sucesso!";
+  static String successReactivedUser = "Usuário reativado com sucesso!";
+  static String successSuspendUser = "Usuário suspenso com sucesso!";
   static String selectProductCategory = "Selecione uma categoria";
   static String users = "Usuários";
-
+  static String valid = "Válidos";
+  static String invalid = "Inválidos";
+  static String suspended = "Suspensos";
+  static String suspend = "Suspender";
+  static String reactivate = "Reativar";
 }

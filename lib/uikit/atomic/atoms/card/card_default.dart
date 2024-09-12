@@ -8,11 +8,13 @@ class CardDefault extends StatelessWidget {
   final void Function()? onTap;
   final Widget child;
   final double? borderRadius;
+  final EdgeInsets? padding;
   const CardDefault({
     super.key,
     this.onTap,
     required this.child,
     this.borderRadius,
+    this.padding,
   });
 
   @override
@@ -21,6 +23,7 @@ class CardDefault extends StatelessWidget {
       borderRadius: BorderRadius.circular(Scale.sm),
       onTap: onTap,
       child: Container(
+        padding: padding,
         decoration: BoxDecoration(
           border: Border.all(color: LightColors.tertiary, width: 1.5),
           borderRadius: BorderRadius.all(
