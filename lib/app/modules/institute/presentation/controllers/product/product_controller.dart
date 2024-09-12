@@ -26,4 +26,9 @@ abstract class ProductControllerBase with Store {
   initProductByInstitute(String instituteId) async {
     await viewmodel.listProductByInstitute(instituteId);
   }
+
+  @action
+  suspend(String id) async {
+    await viewmodel.suspendProduct(id);
+  }
 }

@@ -14,8 +14,7 @@ part 'institute_viewmodel.g.dart';
 class InstituteViewmodel = InstituteViewmodelBase with _$InstituteViewmodel;
 
 abstract class InstituteViewmodelBase with Store {
-
-   final InstituteRepository repository;
+  final InstituteRepository repository;
   final MessageService messageService;
   InstituteViewmodelBase({
     required this.repository,
@@ -24,7 +23,6 @@ abstract class InstituteViewmodelBase with Store {
 
   final authController = Injector.get<AuthController>();
   final routeController = Injector.get<RouteController>();
-
 
   @observable
   bool isLoading = false;
@@ -38,10 +36,11 @@ abstract class InstituteViewmodelBase with Store {
       isLoading = true;
       instituteList = await repository.findAllPage();
     } on RestException catch (e) {
-await authController.logout();
+      await authController.logout();
       await routeController.routeClean();
       await authController.accessTokenLoad();
-      messageService.showMessageError(e.message);    } finally {
+      messageService.showMessageError(e.message);
+    } finally {
       isLoading = false;
     }
   }

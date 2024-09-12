@@ -14,15 +14,12 @@ class GroupSelectMenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 320,
-      child: CardDefault(
-          child: Padding(
-        padding: const EdgeInsets.all(Scale.xs),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
+        height: MediaQuery.of(context).size.height - 320,
+        width: double.infinity,
+        child: CardDefault(
+            child: Padding(
+                padding: const EdgeInsets.all(Scale.xs),
+                child: Expanded(
                   child: SelectMenuItem(
                     icon: Icons.person_pin_outlined,
                     text: TextConstant.users,
@@ -33,43 +30,6 @@ class GroupSelectMenuCard extends StatelessWidget {
                           routeController.route.toString());
                     },
                   ),
-                ),
-                const SizedBox(
-                  width: Scale.xs,
-                ),
-                Expanded(
-                  child: SelectMenuItem(
-                      icon: Icons.person_pin_outlined,
-                      text: TextConstant.users,
-                      onTap: () {}),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: Scale.xs,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: SelectMenuItem(
-                      icon: Icons.person_pin_outlined,
-                      text: TextConstant.users,
-                      onTap: () {}),
-                ),
-                const SizedBox(
-                  width: Scale.xs,
-                ),
-                Expanded(
-                  child: SelectMenuItem(
-                      icon: Icons.person_pin_outlined,
-                      text: TextConstant.users,
-                      onTap: () {}),
-                ),
-              ],
-            ),
-          ],
-        ),
-      )),
-    );
+                ))));
   }
 }

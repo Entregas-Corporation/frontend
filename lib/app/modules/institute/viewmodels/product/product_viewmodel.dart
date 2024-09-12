@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
 import 'package:entregas/app/core/dtos/product/product_detail_dto.dart';
@@ -60,6 +61,29 @@ abstract class ProductViewmodelBase with Store {
           .toList();
     } else {
       filterProductPageList = productList?.productDto;
+    }
+  }
+
+  @action
+  suspendProduct(String id) async {
+    bool hasError = false;
+    try {
+      isLoading = true;
+      await repository.suspend(id);
+    } on RestException catch (e) {
+      if (e.response?.statusCode != 400) {
+        await authController.logout();
+        await routeController.routeClean();
+        await authController.accessTokenLoad();
+        messageService.showMessageError(e.message);
+      } else {
+        messageService.showMessageError(e.message);
+      }
+    } finally {
+      isLoading = false;
+      if (!hasError) {
+        messageService.showMessageSuccess(TextConstant.successSuspendProduct);
+      }
     }
   }
 }

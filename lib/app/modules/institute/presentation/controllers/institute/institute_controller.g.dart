@@ -40,6 +40,22 @@ mixin _$InstituteController on InstituteControllerBase, Store {
     return _$registerAsyncAction.run(() => super.register(model, file));
   }
 
+  late final _$suspendAsyncAction =
+      AsyncAction('InstituteControllerBase.suspend', context: context);
+
+  @override
+  Future suspend(String id) {
+    return _$suspendAsyncAction.run(() => super.suspend(id));
+  }
+
+  late final _$updateAsyncAction =
+      AsyncAction('InstituteControllerBase.update', context: context);
+
+  @override
+  Future update(InstituteSaveDto? model, XFile? file, String id) {
+    return _$updateAsyncAction.run(() => super.update(model, file, id));
+  }
+
   @override
   String toString() {
     return '''

@@ -68,6 +68,14 @@ mixin _$ProductViewmodel on ProductViewmodelBase, Store {
         .run(() => super.listProductByInstitute(productCategoryId));
   }
 
+  late final _$suspendProductAsyncAction =
+      AsyncAction('ProductViewmodelBase.suspendProduct', context: context);
+
+  @override
+  Future suspendProduct(String id) {
+    return _$suspendProductAsyncAction.run(() => super.suspendProduct(id));
+  }
+
   late final _$ProductViewmodelBaseActionController =
       ActionController(name: 'ProductViewmodelBase', context: context);
 

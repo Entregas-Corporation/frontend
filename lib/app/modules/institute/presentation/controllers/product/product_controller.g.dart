@@ -27,6 +27,14 @@ mixin _$ProductController on ProductControllerBase, Store {
         .run(() => super.initProductByInstitute(instituteId));
   }
 
+  late final _$suspendAsyncAction =
+      AsyncAction('ProductControllerBase.suspend', context: context);
+
+  @override
+  Future suspend(String id) {
+    return _$suspendAsyncAction.run(() => super.suspend(id));
+  }
+
   late final _$ProductControllerBaseActionController =
       ActionController(name: 'ProductControllerBase', context: context);
 

@@ -57,6 +57,22 @@ mixin _$InstituteViewmodel on InstituteViewmodelBase, Store {
     return _$registerAsyncAction.run(() => super.register(model, file));
   }
 
+  late final _$updateAsyncAction =
+      AsyncAction('InstituteViewmodelBase.update', context: context);
+
+  @override
+  Future<void> update(InstituteSaveDto? model, XFile? file, String id) {
+    return _$updateAsyncAction.run(() => super.update(model, file, id));
+  }
+
+  late final _$suspendInstituteAsyncAction =
+      AsyncAction('InstituteViewmodelBase.suspendInstitute', context: context);
+
+  @override
+  Future suspendInstitute(String id) {
+    return _$suspendInstituteAsyncAction.run(() => super.suspendInstitute(id));
+  }
+
   @override
   String toString() {
     return '''

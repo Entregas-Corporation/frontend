@@ -1,7 +1,9 @@
 import 'package:entregas/app/core/constants/text_constant.dart';
 import 'package:entregas/app/core/controllers/auth/auth_controller.dart';
 import 'package:entregas/app/core/controllers/route/route_controller.dart';
+import 'package:entregas/app/core/dtos/institute/institute_detail_dto.dart';
 import 'package:entregas/app/modules/institute/presentation/controllers/institute/institute_controller.dart';
+import 'package:entregas/app/modules/institute/presentation/pages/update_institute_page.dart';
 import 'package:entregas/app/modules/institute/presentation/widgets/products/my_list_product_by_institutes_widget.dart';
 import 'package:entregas/uikit/uikit.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +51,7 @@ class _MyInstituteByUserPageState extends State<MyInstituteByUserPage>
         toolbarHeight: kToolbarHeight,
         title: Observer(
           builder: (context) {
-            final model = instituteController.institute;
+            final InstituteDetailDto? model = instituteController.institute;
 
             if (instituteController.isLoading) {
               return const CircularProgressIndicator();
@@ -72,6 +74,16 @@ class _MyInstituteByUserPageState extends State<MyInstituteByUserPage>
           IconButtonDefault(
             icon: const Icon(Icons.edit_square),
             tooltipText: TextConstant.editInstitute,
+            onPressed: () {
+              final model = instituteController.institute;
+              if (model != null) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => UpdateInstitutePage(model: model),
+                  ),
+                );
+              }
+            },
           )
         ],
       ),

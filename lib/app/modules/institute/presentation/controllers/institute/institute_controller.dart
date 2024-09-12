@@ -1,5 +1,3 @@
-
-
 import 'package:entregas/app/core/dtos/institute/institute_detail_dto.dart';
 import 'package:entregas/app/core/dtos/institute/institute_save_dto.dart';
 import 'package:image_picker/image_picker.dart';
@@ -31,5 +29,15 @@ abstract class InstituteControllerBase with Store {
   @action
   register(InstituteSaveDto model, XFile file) async {
     await viewmodel.register(model, file);
+  }
+
+  @action
+  suspend(String id) async {
+    await viewmodel.suspendInstitute(id);
+  }
+
+  @action
+  update(InstituteSaveDto? model, XFile? file, String id) async {
+    await viewmodel.update(model, file, id);
   }
 }

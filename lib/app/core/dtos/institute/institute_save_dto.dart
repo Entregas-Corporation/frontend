@@ -4,28 +4,28 @@ import 'dart:convert';
 
 class InstituteSaveDto {
   final String? id;
-  final String name;
-  final String description;
-  final String city;
+  final String? name;
+  final String? description;
+  final String? city;
   final int? number;
   final String? complement;
-  final String longitude;
-  final String latitude;
-  final String whatsapp;
-  final double freight_cost_km;
-  final String user;
+  final String? longitude;
+  final String? latitude;
+  final String? whatsapp;
+  final double? freight_cost_km;
+  final String? user;
   InstituteSaveDto({
     this.id,
-    required this.name,
-    required this.description,
-    required this.city,
+    this.name,
+    this.description,
+    this.city,
     this.number,
     this.complement,
-    required this.longitude,
-    required this.latitude,
-    required this.whatsapp,
-    required this.freight_cost_km,
-    required this.user,
+    this.longitude,
+    this.latitude,
+    this.whatsapp,
+    this.freight_cost_km,
+    this.user,
   });
 
   Map<String, dynamic> toMap() {
@@ -47,16 +47,16 @@ class InstituteSaveDto {
   factory InstituteSaveDto.fromMap(Map<String, dynamic> map) {
     return InstituteSaveDto(
       id: map['id'] != null ? map['id'] as String : null,
-      name: map['name'] as String,
-      description: map['description'] as String,
-      city: map['city'] as String,
+      name: map['name'] != null ? map['name'] as String : null,
+      description: map['description'] != null ? map['description'] as String : null,
+      city: map['city'] != null ? map['city'] as String : null,
       number: map['number'] != null ? map['number'] as int : null,
       complement: map['complement'] != null ? map['complement'] as String : null,
-      longitude: map['longitude'] as String,
-      latitude: map['latitude'] as String,
-      whatsapp: map['whatsapp'] as String,
-      freight_cost_km: map['freight_cost_km'] as double,
-      user: map['user'] as String,
+      longitude: map['longitude'] != null ? map['longitude'] as String : null,
+      latitude: map['latitude'] != null ? map['latitude'] as String : null,
+      whatsapp: map['whatsapp'] != null ? map['whatsapp'] as String : null,
+      freight_cost_km: map['freight_cost_km'] != null ? map['freight_cost_km'] as double : null,
+      user: map['user'] != null ? map['user'] as String : null,
     );
   }
 

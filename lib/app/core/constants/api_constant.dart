@@ -1,5 +1,5 @@
 final class ApiConstant {
-  static const String baseURI = "http://localhost:8080";
+  static const String baseURI = "http://20.97.203.178";
 
   static const String userLogin = "$baseURI/user/login";
   static const String userRegister = "$baseURI/user/register";
@@ -7,13 +7,15 @@ final class ApiConstant {
   static const String listUserValid = "$baseURI/user/list/valid";
   static const String listUserInvalid = "$baseURI/user/list/invalid";
   static const String listUserSuspened = "$baseURI/user/list/admin/invalid";
-  static const String reactivateUserSuspened = "$baseURI/user/reactivate/account";
+  static const String reactivateUserSuspened =
+      "$baseURI/user/reactivate/account";
   static const String suspendUserValid = "$baseURI/user/suspense/account";
-
 
   static const String listProductCategory =
       "$baseURI/product-category/list/valid";
-  static const String registerProductCategory = "$baseURI/product-category/register";
+  static const String registerProductCategory =
+      "$baseURI/product-category/register";
+  static const String suspendProduct = "$baseURI/product/toggle/activity";
 
   static const String listProductValid = "$baseURI/product/list/valid";
   static const String listProductByProductCategory =
@@ -28,4 +30,6 @@ final class ApiConstant {
       "$baseURI/institute/list/user/valid";
   static const String detailInstitute = "$baseURI/institute/detail";
   static const String registerInstitute = "$baseURI/institute/register";
+  static const String suspendInstitute = "$baseURI/institute/toggle/activity";
+  static const String updateInstitute = "$baseURI/institute/update";
 }

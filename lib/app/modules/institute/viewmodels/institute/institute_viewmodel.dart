@@ -67,4 +67,51 @@ abstract class InstituteViewmodelBase with Store {
       }
     }
   }
+
+  @action
+  Future<void> update(InstituteSaveDto? model, XFile? file, String id) async {
+    bool hasError = false;
+    try {
+      isLoading = true;
+      await repository.update(model, file, id);
+    } on RestException catch (e) {
+      messageService.showMessageError(e.message);
+      if (e.response?.statusCode != 400) {
+        await authController.logout();
+        await routeController.routeClean();
+        await authController.accessTokenLoad();
+        messageService.showMessageError(e.message);
+      } else {
+        messageService.showMessageError(e.message);
+      }
+    } finally {
+      isLoading = false;
+      if (!hasError) {
+        messageService.showMessageSuccess(TextConstant.successSaveInstitute);
+      }
+    }
+  }
+
+  @action
+  suspendInstitute(String id) async {
+    bool hasError = false;
+    try {
+      isLoading = true;
+      await repository.suspend(id);
+    } on RestException catch (e) {
+      if (e.response?.statusCode != 400) {
+        await authController.logout();
+        await routeController.routeClean();
+        await authController.accessTokenLoad();
+        messageService.showMessageError(e.message);
+      } else {
+        messageService.showMessageError(e.message);
+      }
+    } finally {
+      isLoading = false;
+      if (!hasError) {
+        messageService.showMessageSuccess(TextConstant.successSuspendInstitute);
+      }
+    }
+  }
 }

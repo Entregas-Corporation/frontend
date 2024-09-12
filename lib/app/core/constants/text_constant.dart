@@ -59,6 +59,8 @@ final class TextConstant {
   static String successSaveProduct = "Produto salvo com sucesso!";
   static String successReactivedUser = "Usuário reativado com sucesso!";
   static String successSuspendUser = "Usuário suspenso com sucesso!";
+  static String successSuspendProduct = "Produto suspenso com sucesso!";
+  static String successSuspendInstitute = "Local suspenso com sucesso!";
   static String selectProductCategory = "Selecione uma categoria";
   static String users = "Usuários";
   static String valid = "Válidos";
@@ -66,4 +68,5 @@ final class TextConstant {
   static String suspended = "Suspensos";
   static String suspend = "Suspender";
   static String reactivate = "Reativar";
+  static String updateInstitute = "Editar Local";
 }
